@@ -1,0 +1,633 @@
+<!-- =========================
+     FICHIER : generic.html
+     (Learn more : section MATLAB = CUVE + MOTEUR au même endroit, même projet)
+========================= -->
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Détails des projets | SOFIANE BADJA</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+
+		<style>
+			.project-detail { max-width: 980px; margin: 0 auto; }
+			.project-detail p, .project-detail li { line-height: 1.75; font-size: 1.05rem; }
+			.project-detail h2 { margin-top: 0.8rem; }
+
+			/* ✅ Fix CSS (ton bloc était cassé) */
+			.project-gallery img,
+			.project-hero img {
+				width: 100%;
+				height: auto;
+			}
+
+			.project-hero { max-width: 520px; margin: 0.5rem 0 1.2rem 0; }
+			.project-hero img { width: 100%; height: 220px; object-fit: cover; border-radius: 0.35rem; display: block; }
+			.toc a { text-decoration: none; }
+			.toc li { margin: 0.3rem 0; }
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<div id="wrapper">
+
+			<div id="main">
+				<div class="inner">
+
+					<header id="header">
+						<a href="index.html" class="logo"><strong>SOFIANE</strong> BADJA</a>
+						
+					</header>
+
+					<section class="project-detail">
+						<header class="main">
+							<h1>Détails des projets</h1>
+
+						</header>
+<div class="box">
+
+	<ul class="toc">
+		<li><a href="#stage"> Stage Automaticien — Cofidur EMS</a></li>
+		<li><a href="#kuka"> Pilotage d’un bras robot industriel KUKA</a></li>
+		<li><a href="#tia-portal"> Automatisme industriel avec TIA Portal (Siemens S7-1200)</a></li>
+		<li><a href="#control-expert"> Automatisme industriel avec Control Expert (Schneider)</a></li>
+		<li><a href="#moteur-v6"> Conception d’un moteur V6 sous Siemens NX</a></li>
+		<li><a href="#matlab"> Asservissement & régulation — MATLAB/Simulink (cuve + moteur)</a></li>
+		<li><a href="#arduino"> Robot mobile autonome — Arduino</a></li>
+		<li><a href="#ros2"> Robot LIMO — ROS2</a></li>
+		<li><a href="#fpga"> FPGA — Chronomètre</a></li>
+		<li><a href="#labview"> LabVIEW</a></li>
+		<li><a href="#elec"> Carte électronique</a></li>
+		<li><a href="#image"> Traitement d’images — Contrôle qualité non distructif </a></li>
+	</ul>
+</div>
+
+<section id="stage">
+
+    <h2>Stage Automaticien – Cofidur EMS</h2>
+
+    <!-- PHOTOS -->
+    <div class="project-media">
+
+        <!-- TA PHOTO -->
+        <div class="project-box">
+            <img src="images/cof.jpeg" alt="Stage Cofidur EMS">
+        </div>
+
+        <!-- LOGO -->
+        <div class="project-box logo-box">
+            <img src="images/cofidur.jpg" alt="Logo Cofidur EMS">
+        </div>
+
+    </div>
+
+    <br>
+
+    <!-- TEXTE -->
+    <p>
+        Dans le cadre de mon stage chez <strong>Cofidur EMS</strong>, une entreprise spécialisée en sous-traitance électronique pour des acteurs majeurs tels que <strong>Airbus, Safran, Thales et Boeing</strong>, j’ai participé à la mise en œuvre d’un projet industriel portant sur la <strong>mise en place d’un système de contrôle par vision automatique</strong>.
+
+        En tant que <strong>stagiaire automaticien</strong>, j’ai contribué au développement d’une solution de <strong>contrôle qualité automatisé</strong> utilisant une <strong>caméra industrielle Keyence IV4-600CA</strong>. L’objectif était d’assurer un contrôle fiable, rapide et reproductible des pièces en production, tout en réduisant les erreurs humaines.
+
+        J’ai participé à l’<strong>analyse fonctionnelle du besoin</strong>, à la définition des critères de détection (présence, position, conformité), ainsi qu’au <strong>paramétrage de la caméra de vision</strong>. J’ai également contribué à l’<strong>intégration du système dans l’environnement industriel</strong>, en assurant la communication avec les équipements et la remontée des résultats de contrôle.
+
+        Le système permet un <strong>contrôle en temps réel</strong> avec détection automatique des défauts, génération de résultats (OK/NOK) et transmission des données vers un système de supervision. Une attention particulière a été portée à la <strong>robustesse</strong>, à la <strong>fiabilité</strong> et à l’adaptation aux contraintes industrielles.
+
+        Ce projet m’a permis de développer des compétences en <strong>vision industrielle</strong>, en <strong>automatisme</strong> et en <strong>intégration de systèmes industriels réels</strong>, dans un environnement exigeant en lien avec les standards de l’industrie aéronautique.
+    </p>
+
+    <ul class="actions">
+        <li><a href="index.html#projects" class="button">← Retour aux projets</a></li>
+    </ul>
+
+</section>
+
+<!-- ✅ PROJET : ROBOT KUKA -->
+<section id="kuka">
+    <h2>Pilotage d’un bras robot industriel KUKA</h2>
+
+    <div class="row project-media">
+        <div class="col-6 col-12-small">
+            <span class="image fit project-box">
+                <img src="images/kukanodered.png" alt="Robot industriel KUKA">
+            </span>
+        </div>
+
+        <div class="col-6 col-12-small">
+            <div class="project-box">
+                <video controls>
+                    <source src="images/robot_kuka.mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas la vidéo.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <p>
+        J’ai réalisé le <strong>pilotage d’un bras robot industriel KUKA</strong> dans le cadre d’un système automatisé, en mettant en œuvre des stratégies de contrôle adaptées aux exigences de précision, de répétabilité et de sécurité. Le projet a débuté par une <strong>analyse fonctionnelle du système robotisé</strong>, permettant de définir les contraintes de mouvement, les trajectoires à suivre et les interactions avec l’environnement.
+
+        J’ai ensuite programmé le robot afin d’assurer le <strong>pilotage des axes</strong>, la gestion des <strong>trajectoires cartésiennes et articulaires</strong>, ainsi que l’exécution de séquences automatisées. Une attention particulière a été portée à la <strong>gestion des états du robot</strong>, à la synchronisation des actions et à la sécurisation des mouvements.
+
+        En parallèle, j’ai développé une <strong>communication industrielle avec Node-RED</strong>, permettant l’<strong>échange de données en temps réel</strong> entre le robot et un système de supervision. Cette interface a permis le <strong>pilotage à distance</strong>, l’envoi de commandes, la récupération des états du robot ainsi que la visualisation des informations de fonctionnement.
+
+        L’intégration de Node-RED a également permis de mettre en place une <strong>architecture de communication flexible</strong>, facilitant l’interfaçage avec d’autres équipements industriels et ouvrant la voie à des applications de type <strong>industrie 4.0</strong>. Enfin, des phases de <strong>tests, validation et mise au point</strong> ont été réalisées afin de garantir la fiabilité du système, la précision des mouvements et la robustesse du pilotage en conditions réelles.
+    </p>
+
+    <ul class="actions">
+        <li><a href="index.html#projects" class="button">← Retour aux projets</a></li>
+    </ul>
+</section>
+
+<section id="tia-portal">
+    <h2>Automatisme industriel avec TIA Portal (Siemens S7-1200)</h2>
+
+    <div class="project-media">
+        <div>
+            <div class="project-box">
+                <img src="images/aqwzsx.png" alt="Projet TIA Portal Siemens S7-1200">
+            </div>
+        </div>
+
+        <div>
+            <div class="project-box">
+                <video controls>
+                    <source src="images/v1.mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas la vidéo.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <p>
+        J’ai réalisé un projet d’<strong>automatisme industriel sous TIA Portal</strong> reposant sur la programmation d’un
+        <strong>automate Siemens S7-1200</strong> et l’utilisation d’une <strong>IHM Siemens</strong> pour la supervision du procédé.
+        L’objectif principal était de concevoir une solution capable d’assurer le <strong>pilotage, la commande et la surveillance</strong>
+        d’un système automatisé didactique intégrant différents actionneurs et capteurs.
+
+        Le projet a débuté par une <strong>analyse fonctionnelle du système</strong>, afin d’identifier les différentes étapes de fonctionnement,
+        les conditions de transition, les sécurités à mettre en place ainsi que les interactions entre les entrées/sorties de l’automate.
+        J’ai ensuite développé la <strong>logique de commande</strong> du système dans <strong>TIA Portal</strong>, en structurant le programme
+        autour des séquences de fonctionnement, de la gestion des états, des conditions de démarrage et d’arrêt, ainsi que des mécanismes
+        de sécurité nécessaires au bon déroulement du cycle.
+
+        En parallèle, j’ai conçu une <strong>interface homme-machine (IHM)</strong> permettant le <strong>pilotage du système</strong>,
+        la sélection des commandes, l’affichage des états de fonctionnement et la visualisation des informations utiles à l’exploitation.
+        Cette interface facilite l’utilisation du procédé en offrant une supervision simple, claire et ergonomique, tout en améliorant
+        la lecture du comportement global du système.
+
+        Ce projet m’a permis de travailler sur plusieurs aspects essentiels de l’automatisme industriel :
+        <strong>configuration de l’API Siemens S7-1200</strong>, affectation des <strong>entrées/sorties</strong>,
+        élaboration de la <strong>logique séquentielle</strong>, structuration du programme, communication avec l’IHM,
+        tests de fonctionnement et validation du cycle automatisé. J’ai également réalisé des phases de
+        <strong>mise au point</strong> pour vérifier la cohérence des séquences, la réactivité du système,
+        la fiabilité du pilotage et le bon enchaînement des opérations.
+
+        Enfin, ce travail m’a permis de renforcer mes compétences en <strong>programmation d’automates industriels</strong>,
+        en <strong>supervision de procédés</strong> et en <strong>intégration d’une architecture automatisée complète</strong>,
+        depuis l’analyse du besoin jusqu’aux essais finaux sur système réel.
+    </p>
+
+    <ul class="actions">
+        <li><a href="index.html#projects" class="button">← Retour aux projets</a></li>
+    </ul>
+</section>
+
+<section id="control-expert">
+
+    <h2>Automatisme industriel avec Control Expert (Schneider)</h2>
+
+    <!-- 🎥 2 VIDEOS ALIGNÉES -->
+    <div class="project-media">
+
+        <div class="project-box">
+            <video controls>
+                <source src="images/c1d.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la vidéo.
+            </video>
+        </div>
+
+        <div class="project-box">
+            <video controls>
+                <source src="images/c1e.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la vidéo.
+            </video>
+        </div>
+
+    </div>
+
+    <br>
+
+    <!-- 📝 TEXTE -->
+    <p>
+        J’ai réalisé un projet d’<strong>automatisme industriel avec Control Expert (Schneider Electric)</strong> basé sur la programmation d’un <strong>automate programmable industriel (API)</strong> dans un environnement de contrôle temps réel. L’objectif principal était de concevoir et mettre en œuvre une solution automatisée capable d’assurer le <strong>pilotage fiable et sécurisé d’un système industriel</strong> intégrant différents capteurs et actionneurs.
+
+        Le projet a débuté par une <strong>analyse fonctionnelle du système</strong>, permettant d’identifier les différentes étapes du cycle de fonctionnement, les conditions de transition, ainsi que les contraintes de sécurité et de performance. J’ai ensuite développé la <strong>logique de commande</strong> sous Control Expert, en structurant le programme autour de séquences automatisées, de la gestion des états et de la coordination des actions.
+
+        J’ai mis en œuvre des <strong>langages de programmation industriels</strong> adaptés (logique séquentielle, blocs fonctionnels), afin d’assurer un fonctionnement robuste et évolutif du système. Une attention particulière a été portée à la <strong>gestion des entrées/sorties</strong>, à la fiabilité des échanges de données ainsi qu’à la mise en place de mécanismes de sécurité garantissant le bon déroulement du processus.
+
+        En complément, j’ai participé aux phases de <strong>tests, validation et mise au point</strong> du programme, en vérifiant la cohérence des séquences, la réactivité du système et la stabilité du fonctionnement en conditions réelles. Ce travail m’a permis de renforcer mes compétences en <strong>programmation d’automates Schneider</strong>, en <strong>architecture de systèmes automatisés</strong> et en <strong>mise en service de solutions industrielles</strong>.
+
+        Enfin, ce projet s’inscrit dans une démarche d’<strong>automatisation industrielle moderne</strong>, avec une approche orientée fiabilité, modularité et performance.
+    </p>
+
+    <ul class="actions">
+        <li><a href="index.html#projects" class="button">← Retour aux projets</a></li>
+    </ul>
+
+</section>
+
+<section id="moteur-v6">
+
+    <h2>Conception d’un moteur V6 sous Siemens NX</h2>
+
+    <!-- IMAGE + VIDEO -->
+    <div class="project-media">
+
+        <!-- IMAGE -->
+        <div class="project-box">
+            <img src="images/a1234.png" alt="Conception moteur V6 Siemens NX">
+        </div>
+
+        <!-- VIDEO -->
+        <div class="project-box">
+            <video controls>
+                <source src="images/s1.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la vidéo.
+            </video>
+        </div>
+
+    </div>
+
+    <br>
+
+    <!-- TEXTE -->
+    <p>
+        J’ai réalisé la <strong>conception d’un moteur V6 sous Siemens NX</strong> en modélisant l’ensemble des pièces mécaniques nécessaires à la construction de l’assemblage. Le projet consistait à créer chaque composant avec les <strong>bonnes dimensions</strong>, les formes adaptées et les interfaces géométriques nécessaires, afin d’obtenir un <strong>assemblage cohérent et fonctionnel</strong>.
+
+        J’ai ainsi conçu les différentes pièces en tenant compte des contraintes d’encombrement, d’alignement et de liaison mécanique, avec une attention particulière portée à la <strong>précision des cotes</strong> et à la compatibilité entre les composants. L’objectif était de garantir une intégration correcte de chaque pièce dans l’ensemble moteur, tout en respectant la logique mécanique de l’architecture V6.
+
+        Ce projet m’a permis de mettre en pratique les outils de <strong>modélisation 3D sur Siemens NX</strong>, de travailler sur la <strong>création de pièces mécaniques</strong>, sur leur <strong>mise en assemblage</strong> et sur la vérification de la cohérence globale du système.
+
+        Il m’a également permis de développer ma rigueur en <strong>conception mécanique assistée par ordinateur</strong>, ainsi que mes compétences en <strong>gestion d’assemblages complexes</strong> et en organisation de projet CAO.
+    </p>
+
+    <ul class="actions">
+        <li><a href="index.html#projects" class="button">← Retour aux projets</a></li>
+    </ul>
+
+</section>
+
+<!-- ✅ UN SEUL PROJET MATLAB : CUVE + MOTEUR AU MÊME ENDROIT -->
+<section id="matlab">
+	<h2>Asservissement et régulation sous MATLAB/Simulink</h2>
+
+	<!-- ====== Partie 1 : CUVE ====== -->
+	<p style="margin:0 0 0.6em 0;"><strong>Régulation du niveau d’eau d’une cuve</strong></p>
+
+	<div class="project-gallery">
+		<div class="row gtr-50 gtr-uniform">
+			<div class="col-4"><span class="image fit"><img src="images/Réservoir industriel en acier inoxydable.png" alt="Cuve industrielle réelle"></span></div>
+			<div class="col-4"><span class="image fit"><img src="images/schema.jpg" alt="Schéma de régulation Simulink"></span></div>
+			<div class="col-4"><span class="image fit"><img src="images/cuve.jpg" alt="Schéma de principe de la cuve"></span></div>
+		</div>
+	</div>
+
+	<p>
+		Dans ce travail, j’ai suivi une démarche structurée en automatique :
+		<strong>modélisation du procédé</strong> à partir des lois physiques,
+		<strong>validation du comportement sous Simulink</strong> en boucle ouverte,
+		puis <strong>mise en place d’une loi de commande proportionnelle</strong>.
+		Le réglage a été effectué à partir d’un objectif de précision en régime permanent,
+		avant d’être <strong>ajusté et validé en boucle fermée</strong>.
+		Une <strong>analyse de sensibilité</strong> m’a permis d’identifier les paramètres
+		les plus influents sur la stabilité et la performance du système.
+	</p>
+
+	<!-- ====== Partie 2 : MOTEUR ====== -->
+	<p style="margin:1.2em 0 0.6em 0;"><strong>Régulation de la vitesse d’un servomoteur à courant continu RS640E</strong></p>
+
+	<div class="project-gallery">
+		<div class="row gtr-50 gtr-uniform">
+			<div class="col-4"><span class="image fit"><img src="images/servo.png" alt="Servomoteur à courant continu"></span></div>
+			<div class="col-4"><span class="image fit"><img src="images/simu.jpg" alt="Schéma de simulation Simulink"></span></div>
+			<div class="col-4"><span class="image fit"><img src="images/plaque.jpg" alt="Plaque signalétique du moteur"></span></div>
+		</div>
+	</div>
+
+	<p>
+		Ce projet repose sur le <strong>paramétrage et la modélisation du moteur</strong>
+		à partir de données constructeur, suivis d’une <strong>analyse dynamique en boucle ouverte</strong>
+		à vide puis en charge.
+		Sur cette base, j’ai <strong>conçu et réglé un correcteur PI</strong> afin de répondre
+		à des critères de performance (rapidité, stabilité, absence d’erreur statique).
+		Différents réglages ont été comparés afin d’étudier le
+		<strong>compromis entre rapidité et robustesse</strong>, et de valider un comportement
+		cohérent avec les contraintes réelles du système.
+	</p>
+
+	<ul class="actions">
+		<li><a href="index.html#projects" class="button">← Retour aux projets</a></li>
+	</ul>
+
+	<hr class="major" />
+</section>
+
+<!-- ====== Les autres projets (inchangés sauf textes demandés) ====== -->
+<section id="arduino">
+	<h2>Robot mobile autonome – Arduino</h2>
+
+	<div class="project-gallery">
+		<div class="row gtr-50 gtr-uniform">
+
+			<div class="col-4"><span class="image fit"><img src="images/robot.png" alt="Robot Arduino (PNG)"></span></div>
+			<div class="col-4"><span class="image fit"><img src="images/code.jpeg" alt="Code Arduino (JPEG)"></span></div>
+			<div class="col-4"><span class="image fit"><img src="images/tra.png" alt="Trajectoire (PNG)"></span></div>
+
+		</div>
+	</div>
+
+	<p>
+		Dans le cadre de ce projet, j’ai commencé par analyser le <strong>cahier des charges</strong>,
+		qui définissait les objectifs fonctionnels du robot et les contraintes de déplacement.
+		J’ai ensuite réalisé le <strong>montage mécanique du robot</strong>, comprenant le
+		<strong>vissage et l’assemblage des composants</strong> (châssis, roues, moteurs),
+		ainsi que le <strong>câblage électrique</strong> avec le <strong>raccordement des fils</strong>,
+		de l’alimentation et des actionneurs. Une vérification complète des connexions a été effectuée
+		afin de valider le bon fonctionnement de l’ensemble.
+		<br><br>
+
+		Après validation du montage, je suis passée à la <strong>programmation sur Arduino</strong>.
+		L’objectif était de permettre au robot de <strong>suivre une trajectoire imposée</strong>,
+		comprenant la <strong>descente d’une pente</strong> puis l’exécution d’un
+		<strong>virage à droite d’environ 45°</strong>, tout en maintenant un déplacement stable.
+		<br><br>
+
+		Afin d’améliorer la précision et la robustesse du système, j’ai mis en place un
+		<strong>correcteur PI</strong> pour la <strong>régulation de la vitesse des moteurs</strong>.
+		Ce correcteur permet de <strong>compenser les différences entre les roues</strong>,
+		les <strong>irrégularités du sol</strong> ainsi que les <strong>variations dues aux frottements</strong>,
+		et ainsi de limiter les écarts de trajectoire.
+		<br><br>
+
+		Pour rendre le fonctionnement du robot plus lisible, j’ai également intégré un
+		<strong>système de signalisation par LEDs</strong> :
+		une <strong>LED verte</strong> indique le mode de déplacement normal,
+		une <strong>LED rouge</strong> signale les phases de virage,
+		et une <strong>LED jaune</strong> correspond à un état intermédiaire ou de transition.
+		<br><br>
+
+		Enfin, j’ai réalisé une phase de <strong>tests expérimentaux</strong> basée sur des
+		<strong>essais successifs et des ajustements progressifs</strong> des paramètres,
+		jusqu’à obtenir une <strong>trajectoire stable, fiable et conforme au cahier des charges</strong>.
+	</p>
+
+	<ul class="actions">
+		<li><a href="index.html#projects" class="button">← Retour aux projets</a></li>
+	</ul>
+
+	<hr class="major" />
+</section>
+
+<!-- ✅ TEXTE COMPLETÉ (ROS2/LIMO) -->
+<section id="ros2">
+	<h2>Robot LIMO sous ROS2</h2>
+	<div class="project-gallery">
+		<div class="row gtr-50 gtr-uniform">
+
+			<div class="col-4"><span class="image fit"><img src="images/limo.png" alt="Robot Arduino (PNG)"></span></div>
+			<div class="col-4"><span class="image fit"><img src="images/codelimo.jpg" alt="Code Arduino (JPEG)"></span></div>
+			<div class="col-4"><span class="image fit"><img src="images/gazebo.jpg" alt="Code Arduino (JPEG)"></span></div>
+			
+		</div>
+	</div>
+
+	<p>
+		Dans ce projet, j’ai travaillé sur le <strong>robot mobile LIMO</strong> en utilisant <strong>ROS2</strong>
+		et une <strong>simulation sous Gazebo</strong>. L’objectif était de concevoir une solution de contrôle
+		avec <strong>deux modes de fonctionnement</strong> et une <strong>logique de sécurité</strong> fiable.
+	</p>
+
+	<p>
+		Le robot devait fonctionner selon deux modes :
+	</p>
+	<ul>
+		<li>
+			<strong>Mode manuel</strong> : commande via <strong>joystick</strong>, activée par un appui sur <strong>R1</strong>.
+			J’ai implémenté la gestion des commandes (vitesse linéaire et angulaire) pour piloter le robot de façon stable.
+		</li>
+		<li>
+			<strong>Mode autonome</strong> : activé par un appui sur <strong>R2</strong>, avec un comportement permettant au robot de
+			<strong>sortir d’un labyrinthe</strong> en appliquant une stratégie de <strong>suivi du mur gauche</strong>.
+			L’algorithme ajuste la trajectoire en fonction des distances mesurées et maintient une progression cohérente vers la sortie.
+		</li>
+	</ul>
+
+	<p>
+		J’ai intégré une <strong>procédure de sécurité</strong> basée sur la détection d’obstacles :
+	</p>
+	<ul>
+		<li>Si un mur est détecté à moins de <strong>30 cm</strong> en face : <strong>interdiction d’avancer</strong> (blocage de la commande avant).</li>
+		<li>Si un mur est détecté à moins de <strong>50 cm</strong> en face : <strong>recul contrôlé</strong> avec une vitesse de <strong>-0.2</strong>.</li>
+		
+	</ul>
+
+	<p>
+		Pour respecter la consigne pédagogique et mettre en avant ROS2, j’ai structuré le projet en
+		<strong>plusieurs nœuds</strong> (capteurs/perception, décision, commande), chacun avec un comportement simple,
+		puis j’ai orchestré l’ensemble via des <strong>fichiers launch</strong>.
+		Cette approche m’a permis de produire une solution <strong>modulaire</strong>, lisible, et facile à faire évoluer.
+	</p>
+
+	<ul class="actions"><li><a href="index.html#projects" class="button">← Retour aux projets</a></li></ul>
+	<hr class="major" />
+</section>
+
+<!-- ✅ TEXTE COMPLETÉ (FPGA) -->
+<section id="fpga">
+	<h2>Projet FPGA – Chronomètre</h2>
+	<div class="project-gallery">
+		<div class="row gtr-50 gtr-uniform">
+
+			
+			<div class="col-4"><span class="image fit"><img src="images/cronoo.jpg" alt="Code Arduino (JPEG)"></span></div>
+			
+			
+		</div>
+	</div>
+<br>
+	<p>
+		Dans ce projet, j’ai développé un <strong>chronomètre numérique</strong> sur FPGA en utilisant
+		<strong>Quartus</strong> et le langage <strong>VHDL</strong>. L’objectif était de concevoir une architecture
+		<strong>fiable</strong>, <strong>structurée</strong> et adaptée à une logique matérielle temps réel.
+	</p>
+
+	<p>
+		J’ai commencé par créer les briques de base :
+		<strong>diviseur d’horloge</strong> (pour obtenir une base de temps stable),
+		<strong>compteurs</strong> (unités/dizaines),
+		<strong>registres</strong> pour mémoriser les états,
+		et une <strong>logique de contrôle</strong> pour gérer les commandes (start/stop/reset selon la consigne).
+	</p>
+
+	<p>
+		Chaque module a été <strong>développé et vérifié</strong> avant l’assemblage final. J’ai ensuite réalisé
+		l’<strong>intégration hiérarchique</strong> de l’ensemble afin d’obtenir un système complet.
+		Ce projet m’a permis de renforcer mes compétences en
+		<strong>conception logique</strong>, <strong>structuration en blocs</strong> et <strong>validation fonctionnelle</strong>
+		sous Quartus.
+	</p>
+
+	<ul class="actions"><li><a href="index.html#projects" class="button">← Retour aux projets</a></li></ul>
+	<hr class="major" />
+</section>
+
+<!-- ✅ TEXTE COMPLETÉ (LABVIEW / CAFE) -->
+<section id="labview">
+	<h2>Application LabVIEW</h2>
+	<div class="project-gallery">
+		<div class="row gtr-50 gtr-uniform">
+
+			<div class="col-4"><span class="image fit"><img src="images/diagramme.jpeg" alt="Robot Arduino (PNG)"></span></div>
+			<div class="col-4"><span class="image fit"><img src="images/lab.jpeg" alt="Code Arduino (JPEG)"></span></div>
+			<div class="col-4"><span class="image fit"><img src="images/fa.jpeg" alt="Code Arduino (JPEG)"></span></div>
+			
+		</div>
+	</div>
+<br>
+	<p>
+		Dans ce projet, j’ai développé une <strong>application LabVIEW</strong> orientée “expérience utilisateur”
+		pour une marque de dosettes, afin de permettre aux clients de <strong>choisir un café</strong> en fonction de
+		<strong>l’intensité</strong> (3 à 12) ou du <strong>volume de la tasse</strong> (Ristretto, Expresso, Largo).
+	</p>
+
+	<p>
+		J’ai structuré le programme autour d’un <strong>VI principal</strong> et de <strong>sous-VIs</strong> :
+	</p>
+	<ul>
+		<li>
+			<strong>Extraction par intensité</strong> : sélection via des cases à cocher (nomenclature imposée),
+			puis affichage des cafés compatibles sous forme de <strong>tableau</strong> (noms + volumes recommandés).
+		</li>
+		<li>
+			<strong>Extraction par volume</strong> : sélection via un <strong>menu déroulant</strong>, puis affichage des cafés compatibles,
+			avec représentation de l’intensité via un <strong>réseau de LEDs</strong> (noires/blanches) conforme au cahier des charges.
+		</li>
+	</ul>
+
+	<p>
+		J’ai également implémenté la partie <strong>authentification</strong> dans le VI principal :
+		saisie d’un identifiant + mot de passe, gestion de <strong>3 essais maximum</strong>, messages utilisateurs,
+		et activation conditionnelle de l’interface de sélection uniquement si l’identification est réussie.
+		Enfin, j’ai ajouté une logique de fin de cycle avec les boutons <strong>New selection</strong>, <strong>Reset</strong> et <strong>Stop program</strong>,
+		pour une application cohérente et exploitable.
+	</p>
+
+	<ul class="actions"><li><a href="index.html#projects" class="button">← Retour aux projets</a></li></ul>
+	<hr class="major" />
+</section>
+
+<!-- ✅ TEXTE COMPLETÉ (CARTE ELEC) -->
+<section id="elec">
+	<h2>Conception de carte électronique</h2>
+	<div class="project-gallery">
+		<div class="row gtr-50 gtr-uniform">
+
+			<div class="col-4"><span class="image fit"><img src="images/1a.png" alt="Robot Arduino (PNG)"></span></div>
+			<div class="col-4"><span class="image fit"><img src="images/2a.png" alt="Code Arduino (JPEG)"></span></div>
+			<div class="col-4"><span class="image fit"><img src="images/3a.png" alt="Code Arduino (JPEG)"></span></div>
+			
+			
+			
+		</div>
+	</div>
+<br>
+	<p>
+		J’ai réalisé une carte électronique dédiée à l’affichage numérique sur <strong>afficheur 7 segments via une interface TCI</strong> .<br> Le projet a commencé par <strong>l’analyse du besoin</strong> et la définition des fonctionnalités attendues <strong>(mode d’affichage, contraintes d’alimentation, type d’interface)</strong>. J’ai ensuite conçu<strong> le schéma électronique</strong> en sélectionnant les composants adaptés (afficheur, drivers/résistances, connectique et alimentation) puis <strong>validé</strong> les choix par des vérifications de cohérence électrique. Après cette phase de conception, j’ai procédé au<strong> câblage </strong>et à l’assemblage de la carte, en veillant au respect du routage, à la qualité des soudures et à la fiabilité des connexions. J’ai ensuite développé la partie logicielle pour piloter l’afficheur et gérer la communication via l’interface TCI, avec une mise au point progressive (tests unitaires des segments, puis affichage complet). Enfin, j’ai <strong>réalisé une campagne de tests fonctionnels (validation de l’affichage, stabilité, erreurs de communication, consommation)</strong> et corrigé les anomalies jusqu’à obtenir un fonctionnement robuste et conforme aux spécifications
+	</p>
+
+	<ul class="actions"><li><a href="index.html#projects" class="button">← Retour aux projets</a></li></ul>
+</section>
+
+<section id="image">
+	<h2>Conception d'une unité de dilution gazeuse</h2>
+	<div class="project-gallery">
+		<div class="row gtr-50 gtr-uniform">
+
+			<div class="col-4"><span class="image fit"><img src="images/azer.png" alt="Robot Arduino (PNG)"></span></div>
+
+		</div>
+	</div>
+	<br>
+	<p>
+		J’ai réalisé et piloté une unité complète de<strong> dilution gazeuse </strong> reposant sur l’intégration de<strong>  quatre régulateurs et débitmètres massiques analogiques</strong> . Le projet a débuté par <strong>l’analyse fonctionnelle du système</strong> et la définition des exigences de<strong> précision</strong>, de stabilité et de sécurité des mélanges gazeux. J’ai ensuite participé à l’architecture globale de l’installation, incluant le choix et le paramétrage des instruments, leur interconnexion et la gestion des signaux analogiques.
+
+		J’ai développé sous <strong>LabVIEW </strong>une interface de supervision dédiée, permettant le<strong> pilotage des régulateurs</strong>, le réglage dynamique des consignes de débit, la visualisation en temps réel des données mesurées et l’enregistrement des paramètres pour l’analyse et la traçabilité. En parallèle, j’ai conçu et implémenté <strong>la logique de commande assurant la synchronisation des débitmètre</strong>s, le calcul des rapports de dilution, la gestion des états de fonctionnement et la détection d’anomalies. Enfin, j’ai réalisé des phases de tests et de validation afin de vérifier la fiabilité du système, la reproductibilité des mélanges et la robustesse du pilotage en conditions réelles d’utilisation.
+	</p>
+
+	<ul class="actions"><li><a href="index.html#projects" class="button">← Retour aux projets</a></li></ul>
+</section>
+
+<p><strong>Note :</strong> Je tiens à préciser que certains projets ont été menés en collaboration avec d’autres étudiants, dans un cadre académique.</p>
+
+				</div>
+			</div>
+<!-- Collaboration -->
+
+
+			<div id="sidebar">
+				<div class="inner">
+
+					<section id="search" class="alt">
+						<form method="post" action="#">
+							<input type="text" name="query" id="query" placeholder="Search" />
+						</form>
+					</section>
+
+					<nav id="menu">
+						<header class="major"><h2>Menu</h2></header>
+						<ul>
+							<li><a href="index.html">Accueil</a></li>
+							<li><a href="index.html#projects">Projets</a></li>
+							<li><a href="index.html#skills">Compétences</a></li>
+							<li><a href="elements.html">Contact</a></li>
+						</ul>
+					</nav>
+
+					<section>
+						<header class="major"><h2>Contact</h2></header>
+						<ul class="contact">
+							<li class="icon solid fa-envelope"><a href="mailto:sofianebadja90@gmail.com">sofianebadja90@gmail.com</a></li>
+							<li class="icon solid fa-phone">06 99 97 29 33</li>
+							<li class="icon solid fa-home">Clermont-Ferrand, France</li>
+						</ul>
+					</section>
+
+					<footer id="footer">
+						<p class="copyright">
+							&copy; SOFIANE BADJA
+							Design: <a href="https://html5up.net"></a>.
+						</p>
+					</footer>
+
+				</div>
+			</div>
+
+		</div>
+		
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
