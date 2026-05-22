@@ -1343,7 +1343,32 @@
 		</style>
 
 			<link rel="stylesheet" href="assets/css/sox27-platform.css" />
-	</head>
+	
+<style id="sox27-simulation-embed-style">
+  #simulation-convoyeur { margin-top: 2.5rem; }
+  .sox27-simulation-frame-card {
+    background: rgba(14,16,28,.82);
+    border: 1px solid rgba(255,255,255,.13);
+    border-radius: 28px;
+    box-shadow: 0 24px 80px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.08);
+    overflow: hidden;
+    backdrop-filter: blur(14px);
+  }
+  .sox27-simulation-frame-head {
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid rgba(255,255,255,.10);
+    background: linear-gradient(135deg, rgba(56,189,248,.12), rgba(139,92,246,.08));
+  }
+  .sox27-simulation-frame-head strong { color: #f8fafc !important; letter-spacing: .04em; }
+  .sox27-simulation-frame-head span { color: #bae6fd; font-size: .85rem; font-weight: 700; }
+  .sox27-simulation-frame {
+    width: 100%; height: 780px; border: 0; display: block; background: #050913;
+  }
+  @media screen and (max-width: 980px) { .sox27-simulation-frame { height: 900px; } }
+</style>
+
+</head>
 
 	<body class="is-preload">
 		<canvas id="sox27-neural-core" aria-hidden="true"></canvas>
@@ -1620,11 +1645,36 @@
     <ul class="actions">
       <li><a href="generic.html#stage" class="button">Voir le projet Cofidur</a></li>
       <li><a href="https://cofidur-keyence-sofiane.netlify.app/" target="_blank" class="button primary">Voir l’application IV Cofidur</a></li>
+      <li><a href="#simulation-convoyeur" class="button primary">Voir la simulation convoyeur</a></li>
     </ul>
   </div>
 </section>
 
-					<!-- ===== TECHNOLOGIES ===== -->
+					
+<!-- ===== SIMULATION CONVOYEUR VISION INTÉGRÉE ===== -->
+<section id="simulation-convoyeur">
+  <header class="major">
+    <h2>Simulation convoyeur vision — OK/NOK</h2>
+  </header>
+  <p class="so-section-intro">
+    Démonstration animée du cycle automatisé : convoyeur en marche, acquisition caméra, analyse carte,
+    arrêt sur défaut NOK, intervention opérateur, appui pédale, marche arrière 3 secondes puis re-scan OK.
+  </p>
+
+  <div class="sox27-simulation-frame-card">
+    <div class="sox27-simulation-frame-head">
+      <strong>SO X27 Industrial Vision Simulation</strong>
+      <span>Convoyeur • Caméra • Scan • OK/NOK • Pédale reset</span>
+    </div>
+    <iframe class="sox27-simulation-frame"
+            src="convoyeur-vision.html"
+            title="Simulation convoyeur vision OK NOK"
+            loading="lazy"></iframe>
+  </div>
+</section>
+
+
+<!-- ===== TECHNOLOGIES ===== -->
 					<section id="technologies">
 						<header class="major"><h2>Technologies & outils</h2></header>
 						<p class="so-section-intro">Les outils que j’utilise dans mes projets couvrent l’automatisme industriel, la robotique, la simulation, l’électronique, le développement logiciel et l’intégration de systèmes.</p>
@@ -1767,6 +1817,7 @@ Tests, validation et mise au point des programmes automatisés.
 			<div class="so-project-tags"><span>Keyence</span><span>Vision</span><span>Industrie</span></div>
 			<ul class="actions">
 				<li><a href="generic.html#stage" class="button">Plus</a></li>
+				<li><a href="convoyeur-vision.html" target="_blank" class="button primary">Simulation convoyeur</a></li>
 			</ul>
 		</article>
 
