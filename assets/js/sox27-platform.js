@@ -229,3 +229,242 @@
     frame();
   }
 })();
+
+
+/* ===== SO X27 : real bridge, realtime browser AI, advanced Three.js core ===== */
+(function(){
+  const $ = (s, root=document) => root.querySelector(s);
+
+  function logTo(sel, text){
+    const box = $(sel);
+    if(!box) return;
+    const div = document.createElement('div');
+    div.textContent = text;
+    box.appendChild(div);
+    box.scrollTop = box.scrollHeight;
+  }
+
+  // Local bridge connection
+  const BRIDGE_URL = 'http://127.0.0.1:8765';
+
+  async function callBridge(command){
+    logTo('[data-x27-local-log]', 'WEB: ' + command);
+    try {
+      const res = await fetch(BRIDGE_URL + '/command', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({command})
+      });
+      const data = await res.json();
+      logTo('[data-x27-local-log]', 'SO X27 LOCAL: ' + (data.message || JSON.stringify(data)));
+      setBridgeStatus(true);
+      return data;
+    } catch(e){
+      logTo('[data-x27-local-log]', 'ERROR: local bridge offline. Start sox27_bridge_server.py');
+      setBridgeStatus(false);
+      return null;
+    }
+  }
+
+  function setBridgeStatus(online){
+    const st = $('[data-x27-bridge-status]');
+    if(!st) return;
+    st.classList.remove('is-online','is-offline');
+    st.classList.add(online ? 'is-online' : 'is-offline');
+    st.textContent = online ? 'ONLINE' : 'OFFLINE';
+  }
+
+  async function testBridge(){
+    try {
+      const res = await fetch(BRIDGE_URL + '/status');
+      const data = await res.json();
+      setBridgeStatus(true);
+      logTo('[data-x27-local-log]', 'BRIDGE: ' + (data.message || 'online'));
+    } catch(e){
+      setBridgeStatus(false);
+      logTo('[data-x27-local-log]', 'BRIDGE: offline');
+    }
+  }
+
+  const localSend = $('[data-x27-local-send]');
+  const localInput = $('[data-x27-local-command]');
+  if(localSend && localInput){
+    localSend.addEventListener('click', () => {
+      const cmd = localInput.value.trim();
+      if(cmd) callBridge(cmd);
+      localInput.value = '';
+    });
+    localInput.addEventListener('keydown', e => {
+      if(e.key === 'Enter'){
+        const cmd = localInput.value.trim();
+        if(cmd) callBridge(cmd);
+        localInput.value = '';
+      }
+    });
+  }
+
+  const testBtn = $('[data-x27-test-bridge]');
+  if(testBtn) testBtn.addEventListener('click', testBridge);
+
+  document.querySelectorAll('[data-x27-local-demo]').forEach(btn => {
+    btn.addEventListener('click', () => callBridge(btn.dataset.x27LocalDemo));
+  });
+
+  setTimeout(testBridge, 1200);
+
+  // Realtime browser AI demo
+  const realtimeInput = $('[data-x27-realtime-input]');
+  const realtimeSend = $('[data-x27-realtime-send]');
+  const realtimeMic = $('[data-x27-realtime-mic]');
+  const realtimeOrb = $('[data-x27-realtime-orb]');
+
+  function answerAI(q){
+    const question = String(q || '').trim();
+    if(!question) return;
+    logTo('[data-x27-realtime-log]', 'USER: ' + question);
+    if(realtimeOrb) realtimeOrb.classList.add('is-speaking');
+
+    let response;
+    if(/vision|keyence|cofidur|cam/i.test(question)){
+      response = "SO X27: La partie vision industrielle repose sur l’acquisition image, les outils IA Keyence, la décision OK/NOK et l’action sur le convoyeur.";
+    } else if(/projet|project/i.test(question)){
+      response = "SO X27: Les projets clés sont l’assistant vocal, le command center, la vision industrielle Keyence, l’automatisation desktop et l’architecture agentique.";
+    } else if(/présente|presente|about|qui/i.test(question)){
+      response = "SO X27: Sofiane Badja est orienté automatique, robotique, vision industrielle et IA appliquée aux systèmes intelligents.";
+    } else if(/connect|local|python/i.test(question)){
+      response = "SO X27: La connexion réelle nécessite le serveur local sox27_bridge_server.py, car un site web ne peut pas lancer directement des programmes Windows.";
+    } else {
+      response = "SO X27: Commande analysée. Cette interface est prête à être reliée à une vraie API IA ou au serveur local SO X27.";
+    }
+
+    let i = 0;
+    const timer = setInterval(() => {
+      if(i === 0) logTo('[data-x27-realtime-log]', response);
+      i++;
+      if(i > 1){
+        clearInterval(timer);
+        if(realtimeOrb) realtimeOrb.classList.remove('is-speaking');
+      }
+    }, 350);
+  }
+
+  if(realtimeSend && realtimeInput){
+    realtimeSend.addEventListener('click', () => {
+      answerAI(realtimeInput.value);
+      realtimeInput.value = '';
+    });
+    realtimeInput.addEventListener('keydown', e => {
+      if(e.key === 'Enter'){
+        answerAI(realtimeInput.value);
+        realtimeInput.value = '';
+      }
+    });
+  }
+
+  if(realtimeMic){
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if(SR){
+      const rec = new SR();
+      rec.lang = 'fr-FR';
+      rec.continuous = false;
+      rec.interimResults = false;
+      realtimeMic.addEventListener('click', () => {
+        realtimeMic.classList.add('is-listening');
+        logTo('[data-x27-realtime-log]', 'SO X27: listening...');
+        rec.start();
+      });
+      rec.onresult = e => {
+        realtimeMic.classList.remove('is-listening');
+        answerAI(e.results[0][0].transcript);
+      };
+      rec.onerror = () => {
+        realtimeMic.classList.remove('is-listening');
+        logTo('[data-x27-realtime-log]', 'SO X27: microphone unavailable.');
+      };
+      rec.onend = () => realtimeMic.classList.remove('is-listening');
+    }
+  }
+
+  // Advanced Three.js neural core
+  if(window.THREE && !document.getElementById('sox27-three-core')){
+    const canvas = document.createElement('canvas');
+    canvas.id = 'sox27-three-core';
+    document.body.prepend(canvas);
+
+    const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, innerWidth/innerHeight, 0.1, 1000);
+    camera.position.z = 82;
+
+    const group = new THREE.Group();
+    scene.add(group);
+
+    const nodeCount = innerWidth < 760 ? 80 : 150;
+    const positions = [];
+    const geom = new THREE.BufferGeometry();
+    const vertices = [];
+
+    for(let i=0;i<nodeCount;i++){
+      const x = (Math.random()-.5)*130;
+      const y = (Math.random()-.5)*80;
+      const z = (Math.random()-.5)*70;
+      positions.push(new THREE.Vector3(x,y,z));
+      vertices.push(x,y,z);
+    }
+
+    geom.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+    const mat = new THREE.PointsMaterial({
+      color: 0x38bdf8,
+      size: 0.75,
+      transparent: true,
+      opacity: 0.76
+    });
+    const points = new THREE.Points(geom, mat);
+    group.add(points);
+
+    const lineGeom = new THREE.BufferGeometry();
+    const lineVertices = [];
+    for(let i=0;i<positions.length;i++){
+      for(let j=i+1;j<positions.length;j++){
+        if(positions[i].distanceTo(positions[j]) < 22){
+          lineVertices.push(positions[i].x,positions[i].y,positions[i].z);
+          lineVertices.push(positions[j].x,positions[j].y,positions[j].z);
+        }
+      }
+    }
+    lineGeom.setAttribute('position', new THREE.Float32BufferAttribute(lineVertices, 3));
+    const lineMat = new THREE.LineBasicMaterial({
+      color: 0x8b5cf6,
+      transparent:true,
+      opacity:0.12
+    });
+    const lines = new THREE.LineSegments(lineGeom, lineMat);
+    group.add(lines);
+
+    let mx = 0, my = 0;
+    window.addEventListener('mousemove', e => {
+      mx = (e.clientX / innerWidth - .5) * 2;
+      my = (e.clientY / innerHeight - .5) * 2;
+    });
+
+    function resize(){
+      renderer.setSize(innerWidth, innerHeight);
+      camera.aspect = innerWidth / innerHeight;
+      camera.updateProjectionMatrix();
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    function animate(){
+      requestAnimationFrame(animate);
+      group.rotation.y += 0.0018;
+      group.rotation.x += 0.0007;
+      group.rotation.y += (mx*0.08 - group.rotation.y) * 0.004;
+      group.rotation.x += (-my*0.05 - group.rotation.x) * 0.004;
+      renderer.render(scene, camera);
+    }
+    animate();
+  }
+})();

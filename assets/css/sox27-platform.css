@@ -581,7 +581,7 @@
 }
 
 
-/* ===== SO X27 Final polish : real projects, screenshot placeholders, performance ===== */
+/* ===== SO X27 Final polish : real projects and performance ===== */
 .x27-real-projects .x27-project-card {
   min-height: 360px;
 }
@@ -637,42 +637,98 @@
     linear-gradient(135deg, rgba(2,6,23,.72), rgba(139,92,246,.17), rgba(56,189,248,.16));
 }
 
-.x27-screenshot-guide {
-  padding: 1.3rem;
-}
-
-.x27-shot-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: .85rem;
-  margin-top: 1rem;
-}
-
-.x27-shot-placeholder {
-  min-height: 145px;
-  border-radius: 20px;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  padding: 1rem;
-  color: #dbeafe;
-  font-weight: 900;
-  letter-spacing: .04em;
-  border: 1px dashed rgba(56,189,248,.38);
-  background:
-    linear-gradient(135deg, rgba(255,255,255,.055), rgba(255,255,255,.025)),
-    radial-gradient(circle at 50% 40%, rgba(56,189,248,.14), transparent 42%);
-}
-
 @keyframes x27MediaScan {
   to { transform: translateX(32%); }
 }
 
 @media (max-width: 900px) {
-  .x27-shot-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+@media (max-width: 620px) {
+  .x27-project-media { height: 135px; }
+}
+
+
+/* ===== SO X27 Real Assistant Bridge + Advanced Three.js Core ===== */
+#sox27-three-core {
+  position: fixed;
+  inset: 0;
+  z-index: -6;
+  pointer-events: none;
+  opacity: .82;
+}
+
+.x27-bridge-panel {
+  padding: 1.25rem;
+}
+
+.x27-bridge-status {
+  border-color: rgba(250,204,21,.35);
+  background: rgba(250,204,21,.12);
+  color: #fef3c7;
+}
+
+.x27-bridge-status.is-online {
+  border-color: rgba(52,211,153,.35);
+  background: rgba(52,211,153,.12);
+  color: #bbf7d0;
+}
+
+.x27-bridge-status.is-offline {
+  border-color: rgba(251,113,133,.35);
+  background: rgba(251,113,133,.12);
+  color: #fecdd3;
+}
+
+.x27-bridge-flow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: .7rem;
+  margin-top: 1rem;
+}
+
+.x27-bridge-flow div {
+  min-height: 105px;
+  border-radius: 20px;
+  padding: .85rem;
+  display: grid;
+  align-content: center;
+  text-align: center;
+  background: rgba(255,255,255,.055);
+  border: 1px solid rgba(255,255,255,.10);
+}
+
+.x27-bridge-flow b {
+  display:block;
+  margin-bottom: .35rem;
+  color: transparent !important;
+  background: linear-gradient(90deg, var(--x27-gold), var(--x27-cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-size: 1.2rem;
+}
+
+.x27-bridge-flow span {
+  color: var(--x27-muted);
+  font-size: .82rem;
+  font-weight: 700;
+}
+
+.x27-realtime-orb.is-speaking,
+.x27-orb.is-speaking {
+  animation: x27RealtimeSpeak 1.1s ease-in-out infinite;
+}
+
+@keyframes x27RealtimeSpeak {
+  0%, 100% { transform: scale(1); filter: brightness(1); }
+  50% { transform: scale(1.045); filter: brightness(1.18); }
+}
+
+@media (max-width: 900px) {
+  .x27-bridge-flow { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 620px) {
-  .x27-shot-grid { grid-template-columns: 1fr; }
-  .x27-project-media { height: 135px; }
+  .x27-bridge-flow { grid-template-columns: 1fr; }
+  #sox27-three-core { opacity: .45; }
 }
