@@ -648,8 +648,589 @@
 			}
 		</style>
 
+	
+
+<!-- ===== SO X27 CINEMATIC UPGRADE PACK : loader + 3D background + magnetic UI ===== -->
+<style id="sox27-cinematic-upgrade">
+	:root{
+		--sox27-gold:#facc15;
+		--sox27-cyan:#38bdf8;
+		--sox27-violet:#8b5cf6;
+		--sox27-dark:#030712;
+	}
+
+	/* Loader d'introduction */
+	.sox27-loader{
+		position:fixed;
+		inset:0;
+		z-index:99999;
+		display:grid;
+		place-items:center;
+		background:
+			radial-gradient(circle at 50% 35%, rgba(56,189,248,.18), transparent 32%),
+			radial-gradient(circle at 65% 60%, rgba(250,204,21,.10), transparent 26%),
+			linear-gradient(135deg,#020617 0%,#050816 44%,#0f172a 100%);
+		overflow:hidden;
+		transition:opacity .85s ease, visibility .85s ease, transform .85s ease;
+	}
+	body.sox27-ready .sox27-loader{opacity:0;visibility:hidden;transform:scale(1.035)}
+	.sox27-loader::before{
+		content:"";
+		position:absolute;
+		inset:-40%;
+		background:conic-gradient(from 0deg, transparent, rgba(56,189,248,.18), transparent, rgba(250,204,21,.12), transparent, rgba(139,92,246,.16), transparent);
+		animation:sox27LoaderSpin 7s linear infinite;
+		filter:blur(8px);
+	}
+	.sox27-loader::after{
+		content:"";
+		position:absolute;
+		inset:0;
+		background:
+			linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px),
+			linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px);
+		background-size:42px 42px;
+		mask-image:radial-gradient(circle, black 0%, transparent 76%);
+		-webkit-mask-image:radial-gradient(circle, black 0%, transparent 76%);
+	}
+	.sox27-loader-card{
+		position:relative;
+		width:min(92vw,760px);
+		padding:2.35rem;
+		border:1px solid rgba(255,255,255,.15);
+		border-radius:32px;
+		background:linear-gradient(135deg,rgba(255,255,255,.11),rgba(255,255,255,.035));
+		box-shadow:0 35px 120px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.16);
+		backdrop-filter:blur(18px);
+		-webkit-backdrop-filter:blur(18px);
+		text-align:center;
+	}
+	.sox27-loader-mark{
+		width:118px;height:118px;margin:0 auto 1.1rem;
+		border-radius:50%;
+		border:1px solid rgba(56,189,248,.45);
+		display:grid;place-items:center;
+		font-weight:900;
+		letter-spacing:.08em;
+		font-size:1.35rem;
+		color:#fff;
+		background:radial-gradient(circle,rgba(56,189,248,.23),rgba(139,92,246,.08) 55%,transparent 70%);
+		box-shadow:0 0 44px rgba(56,189,248,.32), inset 0 0 22px rgba(250,204,21,.08);
+		animation:sox27CorePulse 2.2s ease-in-out infinite;
+	}
+	.sox27-loader h2{
+		margin:.35rem 0 .55rem!important;
+		font-size:clamp(1.6rem,4vw,3.2rem)!important;
+		font-weight:900!important;
+		letter-spacing:-.07em!important;
+		background:linear-gradient(90deg,#fff,#fde68a,#bae6fd,#c4b5fd);
+		-webkit-background-clip:text;background-clip:text;color:transparent!important;
+	}
+	.sox27-loader p{
+		max-width:650px;
+		margin:.4rem auto 1.2rem!important;
+		color:#dbeafe!important;
+		font-weight:600;
+		line-height:1.75;
+	}
+	.sox27-loader-terminal{
+		margin:1.2rem auto 0;
+		text-align:left;
+		max-width:600px;
+		padding:1rem 1.1rem;
+		border-radius:18px;
+		background:rgba(2,6,23,.72);
+		border:1px solid rgba(56,189,248,.22);
+		font-family:Consolas, Monaco, 'Courier New', monospace;
+		box-shadow:inset 0 0 24px rgba(56,189,248,.08);
+	}
+	.sox27-loader-terminal span{
+		display:block;
+		color:#a7f3d0;
+		font-size:.86rem;
+		line-height:1.8;
+		opacity:0;
+		animation:sox27TerminalLine .5s ease forwards;
+	}
+	.sox27-loader-terminal span:nth-child(1){animation-delay:.25s}
+	.sox27-loader-terminal span:nth-child(2){animation-delay:.65s}
+	.sox27-loader-terminal span:nth-child(3){animation-delay:1.05s}
+	.sox27-loader-terminal span:nth-child(4){animation-delay:1.45s;color:#fde68a}
+	.sox27-loader-bar{
+		width:min(520px,78vw);
+		height:4px;
+		margin:1.25rem auto 0;
+		border-radius:999px;
+		background:rgba(255,255,255,.12);
+		overflow:hidden;
+	}
+	.sox27-loader-bar i{
+		display:block;height:100%;width:100%;
+		background:linear-gradient(90deg,var(--sox27-gold),var(--sox27-cyan),var(--sox27-violet));
+		transform-origin:left center;
+		animation:sox27LoadBar 2.4s ease forwards;
+	}
+
+	/* Canvas profondeur */
+	#sox27-canvas-bg{
+		position:fixed;
+		inset:0;
+		z-index:-4;
+		width:100%;height:100%;
+		pointer-events:none;
+		opacity:.65;
+	}
+
+	/* Curseur premium */
+	.sox27-cursor{
+		position:fixed;
+		left:0;top:0;
+		width:22px;height:22px;
+		border-radius:50%;
+		border:1px solid rgba(56,189,248,.85);
+		box-shadow:0 0 24px rgba(56,189,248,.38), inset 0 0 12px rgba(250,204,21,.12);
+		pointer-events:none;
+		z-index:99998;
+		transform:translate(-50%,-50%);
+		transition:width .18s ease,height .18s ease,border-color .18s ease,opacity .25s ease;
+	}
+	.sox27-cursor.is-hovering{width:42px;height:42px;border-color:rgba(250,204,21,.95)}
+
+	/* Effet premium sur sections */
+	#banner,.features article,.posts article,.box,.project-detail > section,.so-stat-card,.so-experience-card,.so-contact-card{
+		transform-style:preserve-3d;
+		will-change:transform;
+	}
+	.sox27-magnetic{transition:transform .18s ease-out!important;}
+
+	/* Terminal IA intégré sous la bannière */
+	.sox27-terminal-panel{
+		position:relative;
+		margin:1.5rem 0 2rem;
+		padding:1.15rem 1.25rem;
+		border-radius:24px;
+		border:1px solid rgba(56,189,248,.24);
+		background:linear-gradient(135deg,rgba(2,6,23,.75),rgba(15,23,42,.55));
+		box-shadow:0 20px 70px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.08);
+		overflow:hidden;
+	}
+	.sox27-terminal-panel::before{
+		content:"";position:absolute;inset:0;
+		background:linear-gradient(90deg,transparent,rgba(56,189,248,.08),transparent);
+		transform:translateX(-100%);animation:sox27PanelSweep 5s ease-in-out infinite;
+	}
+	.sox27-terminal-title{
+		display:flex;align-items:center;gap:.6rem;margin-bottom:.65rem;
+		font-weight:800;color:#f8fafc!important;letter-spacing:.04em;text-transform:uppercase;font-size:.84rem;
+	}
+	.sox27-led{width:10px;height:10px;border-radius:50%;background:#22c55e;box-shadow:0 0 18px #22c55e;animation:sox27Led 1.4s ease-in-out infinite}
+	.sox27-terminal-lines{font-family:Consolas, Monaco, monospace;color:#bae6fd;font-size:.92rem;line-height:1.8}
+	.sox27-terminal-lines span{display:block;opacity:.92}
+
+	/* Timeline premium si ajoutée */
+	.sox27-timeline{
+		display:grid;
+		gap:1rem;
+		margin:1.5rem 0 2rem;
+	}
+	.sox27-timeline-item{
+		position:relative;
+		padding:1.15rem 1.2rem 1.15rem 2.2rem;
+		border:1px solid rgba(255,255,255,.12);
+		border-radius:22px;
+		background:rgba(255,255,255,.06);
+		box-shadow:0 15px 45px rgba(0,0,0,.22);
+	}
+	.sox27-timeline-item::before{
+		content:"";position:absolute;left:.85rem;top:1.35rem;width:10px;height:10px;border-radius:50%;
+		background:var(--sox27-gold);box-shadow:0 0 22px rgba(250,204,21,.55);
+	}
+	.sox27-timeline-item strong{display:block;color:#fff!important}
+	.sox27-timeline-item small{color:#bae6fd;font-weight:700}
+
+	@keyframes sox27LoaderSpin{to{transform:rotate(360deg)}}
+	@keyframes sox27CorePulse{0%,100%{transform:scale(1);box-shadow:0 0 44px rgba(56,189,248,.32)}50%{transform:scale(1.06);box-shadow:0 0 70px rgba(250,204,21,.24)}}
+	@keyframes sox27TerminalLine{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+	@keyframes sox27LoadBar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+	@keyframes sox27PanelSweep{0%,35%{transform:translateX(-100%)}70%,100%{transform:translateX(100%)}}
+	@keyframes sox27Led{0%,100%{opacity:.45}50%{opacity:1}}
+
+	@media (prefers-reduced-motion: reduce){
+		.sox27-loader,.sox27-loader *,#sox27-canvas-bg,.sox27-terminal-panel::before{animation:none!important;transition:none!important}
+		.sox27-loader{display:none!important}
+	}
+	@media screen and (max-width:736px){
+		.sox27-loader-card{padding:1.4rem;border-radius:24px}
+		.sox27-loader-mark{width:88px;height:88px;font-size:1rem}
+		.sox27-cursor{display:none}
+		#sox27-canvas-bg{opacity:.38}
+	}
+
+
+			/* ===== SO X27 FULL CINEMATIC UPGRADE : loader, 3D bg, AI skills, timeline, mobile ===== */
+			.sox27-loader {
+				position: fixed;
+				inset: 0;
+				z-index: 99999;
+				display: grid;
+				place-items: center;
+				background:
+					radial-gradient(circle at 50% 35%, rgba(56,189,248,.18), transparent 28%),
+					radial-gradient(circle at 20% 80%, rgba(139,92,246,.12), transparent 30%),
+					#02030a;
+				transition: opacity .9s ease, visibility .9s ease, transform .9s ease;
+			}
+			body.sox27-loaded .sox27-loader {
+				opacity: 0;
+				visibility: hidden;
+				transform: scale(1.02);
+			}
+			.sox27-loader-card {
+				width: min(720px, calc(100vw - 2rem));
+				position: relative;
+				padding: 2.2rem;
+				border: 1px solid rgba(255,255,255,.14);
+				border-radius: 30px;
+				background: linear-gradient(135deg, rgba(255,255,255,.09), rgba(255,255,255,.025));
+				box-shadow: 0 30px 120px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.12);
+				backdrop-filter: blur(18px);
+				overflow: hidden;
+			}
+			.sox27-loader-card::before {
+				content:"";
+				position:absolute;
+				inset:-40%;
+				background:
+					linear-gradient(90deg, transparent, rgba(56,189,248,.25), transparent),
+					repeating-linear-gradient(90deg, transparent 0 32px, rgba(255,255,255,.05) 33px 34px);
+				animation: sox27LoaderScan 2.8s linear infinite;
+			}
+			.sox27-loader-card > * { position: relative; z-index: 1; }
+			.sox27-loader-mark {
+				font-size: clamp(2.3rem, 8vw, 5.8rem);
+				line-height: .9;
+				font-weight: 900;
+				letter-spacing: -.08em;
+				background: linear-gradient(90deg, #facc15, #38bdf8, #8b5cf6);
+				-webkit-background-clip: text;
+				background-clip: text;
+				color: transparent;
+				text-shadow: 0 0 60px rgba(56,189,248,.25);
+			}
+			.sox27-loader-card h2 { margin: 1rem 0 .4rem 0; letter-spacing: .18em; font-size: .9rem; color:#bae6fd !important; }
+			.sox27-loader-card p { max-width: 640px; color:#f8fafc !important; font-weight: 600; }
+			.sox27-loader-terminal {
+				margin-top: 1.2rem;
+				padding: 1rem;
+				border-radius: 18px;
+				background: rgba(0,0,0,.34);
+				border: 1px solid rgba(56,189,248,.22);
+				font-family: Consolas, Monaco, monospace;
+				color: #bff7ff;
+				font-size: .88rem;
+			}
+			.sox27-loader-terminal span { display:block; opacity:0; animation: sox27BootLine .55s ease forwards; }
+			.sox27-loader-terminal span:nth-child(1){animation-delay:.2s}
+			.sox27-loader-terminal span:nth-child(2){animation-delay:.55s}
+			.sox27-loader-terminal span:nth-child(3){animation-delay:.9s}
+			.sox27-loader-terminal span:nth-child(4){animation-delay:1.25s}
+			.sox27-loader-bar {
+				margin-top: 1.2rem;
+				height: 7px;
+				border-radius: 999px;
+				background: rgba(255,255,255,.08);
+				overflow: hidden;
+			}
+			.sox27-loader-bar i {
+				display:block;
+				height:100%;
+				border-radius:999px;
+				background: linear-gradient(90deg, #facc15, #38bdf8, #8b5cf6);
+				animation: sox27LoadBar 2.15s cubic-bezier(.16,1,.3,1) forwards;
+			}
+			#sox27-canvas-bg {
+				position: fixed;
+				inset: 0;
+				width: 100vw;
+				height: 100vh;
+				z-index: -4;
+				pointer-events: none;
+				opacity: .9;
+			}
+			.sox27-cursor {
+				position: fixed;
+				left: 0;
+				top: 0;
+				width: 28px;
+				height: 28px;
+				border-radius: 50%;
+				border: 1px solid rgba(56,189,248,.75);
+				box-shadow: 0 0 28px rgba(56,189,248,.35), inset 0 0 18px rgba(139,92,246,.18);
+				pointer-events: none;
+				z-index: 9999;
+				transform: translate(-50%, -50%);
+				transition: width .2s ease, height .2s ease, border-color .2s ease;
+				mix-blend-mode: screen;
+			}
+			.sox27-cursor.is-hot {
+				width: 54px;
+				height: 54px;
+				border-color: rgba(250,204,21,.9);
+			}
+			.sox27-identity-grid,
+			.sox27-skill-dashboard {
+				display: grid;
+				grid-template-columns: repeat(3, minmax(0, 1fr));
+				gap: 1rem;
+			}
+			.sox27-identity-card,
+			.sox27-terminal,
+			.sox27-radar,
+			.sox27-skill-bars,
+			.sox27-timeline-item {
+				background: rgba(14,16,28,.78);
+				border: 1px solid rgba(255,255,255,.13);
+				border-radius: 26px;
+				box-shadow: 0 20px 70px rgba(0,0,0,.26), inset 0 1px 0 rgba(255,255,255,.08);
+				backdrop-filter: blur(14px);
+			}
+			.sox27-identity-card {
+				padding: 1.35rem;
+				position: relative;
+				overflow: hidden;
+			}
+			.sox27-identity-card span {
+				font-weight: 900;
+				font-size: 2rem;
+				background: linear-gradient(90deg, #facc15, #38bdf8);
+				-webkit-background-clip: text;
+				background-clip: text;
+				color: transparent;
+			}
+			.sox27-identity-card:hover,
+			.sox27-timeline-item:hover {
+				transform: translateY(-8px);
+				border-color: rgba(56,189,248,.42);
+				box-shadow: 0 30px 90px rgba(56,189,248,.15), 0 20px 70px rgba(0,0,0,.35);
+			}
+			.sox27-terminal { overflow:hidden; }
+			.sox27-terminal-top {
+				display:flex;
+				align-items:center;
+				gap:.5rem;
+				padding:.9rem 1rem;
+				background: rgba(0,0,0,.28);
+				border-bottom: 1px solid rgba(255,255,255,.11);
+			}
+			.sox27-terminal-top span {
+				width: 11px;
+				height: 11px;
+				border-radius: 50%;
+				background: #38bdf8;
+				box-shadow: 0 0 18px rgba(56,189,248,.7);
+			}
+			.sox27-terminal-top span:nth-child(1){background:#f87171}
+			.sox27-terminal-top span:nth-child(2){background:#facc15}
+			.sox27-terminal-top span:nth-child(3){background:#34d399}
+			.sox27-terminal-top strong { margin-left:.5rem; font-family: Consolas, Monaco, monospace; color:#bae6fd !important; }
+			.sox27-terminal-lines {
+				min-height: 210px;
+				padding: 1.15rem;
+				font-family: Consolas, Monaco, monospace;
+				color: #dffcff;
+				background:
+					linear-gradient(rgba(56,189,248,.045) 1px, transparent 1px),
+					rgba(0,0,0,.28);
+				background-size: 100% 32px;
+			}
+			.sox27-terminal-lines span {
+				display:block;
+				margin:.4rem 0;
+				color:#bff7ff;
+			}
+			.sox27-terminal-lines span::before { content: "> "; color:#facc15; }
+			.sox27-skill-dashboard {
+				grid-template-columns: .75fr 1.25fr;
+				align-items: stretch;
+			}
+			.sox27-radar {
+				min-height: 430px;
+				position: relative;
+				display: grid;
+				place-items: center;
+				overflow: hidden;
+			}
+			.sox27-radar::before {
+				content:"";
+				position:absolute;
+				width: 72%;
+				aspect-ratio: 1;
+				border-radius: 50%;
+				background:
+					radial-gradient(circle, rgba(56,189,248,.16), transparent 54%),
+					conic-gradient(from 0deg, transparent, rgba(56,189,248,.28), transparent 28%);
+				animation: sox27RadarSpin 7s linear infinite;
+			}
+			.sox27-orbit {
+				position:absolute;
+				border-radius:50%;
+				border:1px solid rgba(56,189,248,.22);
+			}
+			.orbit-1{width:32%;aspect-ratio:1}
+			.orbit-2{width:55%;aspect-ratio:1}
+			.orbit-3{width:78%;aspect-ratio:1}
+			.sox27-core {
+				position:relative;
+				z-index:2;
+				width:110px;
+				height:110px;
+				border-radius:50%;
+				display:grid;
+				place-items:center;
+				text-align:center;
+				font-weight:900;
+				letter-spacing:-.04em;
+				color:#fff;
+				background: radial-gradient(circle, rgba(250,204,21,.3), rgba(56,189,248,.20), rgba(139,92,246,.12));
+				border:1px solid rgba(255,255,255,.22);
+				box-shadow:0 0 50px rgba(56,189,248,.28);
+			}
+			.sox27-radar-label {
+				position:absolute;
+				z-index:3;
+				padding:.42rem .7rem;
+				border-radius:999px;
+				background:rgba(255,255,255,.08);
+				border:1px solid rgba(255,255,255,.14);
+				font-size:.8rem;
+				font-weight:700;
+				color:#f8fafc;
+			}
+			.l1{top:12%;left:14%}.l2{top:18%;right:10%}.l3{bottom:18%;left:8%}.l4{bottom:12%;right:10%}
+			.sox27-skill-bars { padding: 1.3rem; }
+			.sox27-skill-row {
+				display:grid;
+				grid-template-columns: 1.1fr 1fr auto;
+				gap: .9rem;
+				align-items:center;
+				padding:.85rem 0;
+				border-bottom:1px solid rgba(255,255,255,.08);
+			}
+			.sox27-skill-row:last-child { border-bottom:0; }
+			.sox27-skill-row span { display:block; color:#cbd5e1; font-size:.82rem; margin-top:.15rem; }
+			.sox27-skill-row i {
+				height: 10px;
+				border-radius:999px;
+				background:rgba(255,255,255,.08);
+				overflow:hidden;
+			}
+			.sox27-skill-row i b {
+				display:block;
+				height:100%;
+				width:0;
+				border-radius:999px;
+				background:linear-gradient(90deg,#facc15,#38bdf8,#8b5cf6);
+				box-shadow:0 0 20px rgba(56,189,248,.38);
+				transition: width 1.3s cubic-bezier(.16,1,.3,1);
+			}
+			.sox27-skill-row.so-visible i b { width: var(--level); }
+			.sox27-skill-row em { font-style:normal; color:#bae6fd; font-weight:800; }
+			.sox27-timeline {
+				position:relative;
+				display:grid;
+				gap:1rem;
+				margin-top:1.5rem;
+			}
+			.sox27-timeline::before {
+				content:"";
+				position:absolute;
+				left:35px;
+				top:20px;
+				bottom:20px;
+				width:2px;
+				background:linear-gradient(#facc15,#38bdf8,#8b5cf6);
+				box-shadow:0 0 20px rgba(56,189,248,.38);
+			}
+			.sox27-timeline-item {
+				position:relative;
+				display:grid;
+				grid-template-columns:70px 1fr;
+				gap:1rem;
+				padding:1.15rem;
+				transition:.35s ease;
+			}
+			.sox27-timeline-item > span {
+				position:relative;
+				z-index:2;
+				width:46px;
+				height:46px;
+				display:grid;
+				place-items:center;
+				border-radius:50%;
+				font-weight:900;
+				background:linear-gradient(135deg, rgba(250,204,21,.9), rgba(56,189,248,.9));
+				color:#020617;
+				box-shadow:0 0 28px rgba(56,189,248,.32);
+			}
+			.sox27-magnetic {
+				will-change: transform;
+				transform-style: preserve-3d;
+			}
+			@keyframes sox27LoaderScan { to { transform: translateX(30%); } }
+			@keyframes sox27BootLine { from {opacity:0; transform:translateY(8px)} to {opacity:1; transform:translateY(0)} }
+			@keyframes sox27LoadBar { from {width:0} to {width:100%} }
+			@keyframes sox27RadarSpin { to { transform: rotate(360deg); } }
+
+			@media (max-width: 980px) {
+				.sox27-identity-grid,
+				.sox27-skill-dashboard { grid-template-columns: 1fr; }
+				.sox27-radar { min-height: 340px; }
+				.sox27-skill-row { grid-template-columns: 1fr; gap:.55rem; }
+				.sox27-cursor { display:none; }
+			}
+			@media (max-width: 736px) {
+				.sox27-loader-card { padding:1.35rem; border-radius:22px; }
+				.sox27-terminal-lines { min-height:170px; font-size:.78rem; }
+				.sox27-radar { min-height:300px; }
+				.sox27-core { width:88px; height:88px; }
+				.sox27-timeline::before { left: 27px; }
+				.sox27-timeline-item { grid-template-columns:52px 1fr; padding:.95rem; }
+				.sox27-timeline-item > span { width:36px; height:36px; font-size:.8rem; }
+				#banner, .features article, .posts article, .box, .so-stat-card, .so-experience-card {
+					box-shadow: 0 12px 34px rgba(0,0,0,.24) !important;
+					backdrop-filter: blur(8px);
+				}
+				body::after, .so-neural-bg { opacity:.45; }
+			}
+			@media (prefers-reduced-motion: reduce) {
+				*, *::before, *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+				.sox27-loader { display:none; }
+			}
+
+		</style>
+
+			<link rel="stylesheet" href="assets/css/sox27-platform.css" />
 	</head>
 	<body class="is-preload">
+		<canvas id="sox27-neural-core" aria-hidden="true"></canvas>
+
+<div class="sox27-loader" aria-hidden="true">
+	<div class="sox27-loader-card">
+		<div class="sox27-loader-mark">SO X27</div>
+		<h2>INITIALISATION</h2>
+		<p>Là où la rigueur rencontre l’innovation pour donner vie aux systèmes intelligents.</p>
+		<div class="sox27-loader-terminal">
+			<span>&gt; Chargement de l’architecture neurale...</span>
+			<span>&gt; Vision industrielle : module actif.</span>
+			<span>&gt; Automatique, robotique, IA : synchronisation.</span>
+			<span>&gt; Système prêt.</span>
+		</div>
+		<div class="sox27-loader-bar"><i></i></div>
+	</div>
+</div>
+<canvas id="sox27-canvas-bg"></canvas>
+<div class="sox27-cursor" aria-hidden="true"></div>
+
 
 		<div id="wrapper">
 
@@ -657,7 +1238,7 @@
 				<div class="inner">
 
 					<header id="header">
-						<a href="index.html" class="logo"><strong>SOFIANE</strong> BADJA</a>
+						<a href="index.html" class="logo"><strong>SO X27</strong> — Intelligent Systems Engineer</a>
 						
 					</header>
 
@@ -1417,5 +1998,299 @@
 			})();
 		</script>
 
+	
+
+<!-- ===== SO X27 CINEMATIC UPGRADE JS ===== -->
+<script id="sox27-cinematic-upgrade-js">
+(function(){
+	'use strict';
+	const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+	window.addEventListener('load', () => {
+		setTimeout(() => document.body.classList.add('sox27-ready'), prefersReduced ? 50 : 2300);
+	});
+
+	// Canvas neural starfield, léger et sans dépendance.
+	const canvas = document.getElementById('sox27-canvas-bg');
+	if(canvas && !prefersReduced){
+		const ctx = canvas.getContext('2d');
+		let w, h, dpr, mouse = {x:0,y:0,active:false};
+		let points = [];
+		function resize(){
+			dpr = Math.min(window.devicePixelRatio || 1, 1.7);
+			w = canvas.width = Math.floor(innerWidth * dpr);
+			h = canvas.height = Math.floor(innerHeight * dpr);
+			canvas.style.width = innerWidth + 'px';
+			canvas.style.height = innerHeight + 'px';
+			const count = Math.min(95, Math.max(42, Math.floor(innerWidth / 18)));
+			points = Array.from({length: count}, () => ({
+				x: Math.random()*w,
+				y: Math.random()*h,
+				vx:(Math.random()-.5)*.22*dpr,
+				vy:(Math.random()-.5)*.22*dpr,
+				r:(Math.random()*1.8+1.1)*dpr
+			}));
+		}
+		function draw(){
+			ctx.clearRect(0,0,w,h);
+			for(const p of points){
+				p.x += p.vx; p.y += p.vy;
+				if(p.x<0||p.x>w) p.vx*=-1;
+				if(p.y<0||p.y>h) p.vy*=-1;
+				if(mouse.active){
+					const dx = p.x - mouse.x*dpr, dy = p.y - mouse.y*dpr;
+					const dist = Math.sqrt(dx*dx+dy*dy);
+					if(dist < 170*dpr){ p.x += dx/dist*.18*dpr; p.y += dy/dist*.18*dpr; }
+				}
+			}
+			for(let i=0;i<points.length;i++){
+				for(let j=i+1;j<points.length;j++){
+					const a=points[i], b=points[j];
+					const dx=a.x-b.x, dy=a.y-b.y, dist=Math.sqrt(dx*dx+dy*dy);
+					if(dist < 145*dpr){
+						const alpha = (1 - dist/(145*dpr))*.28;
+						ctx.strokeStyle = `rgba(56,189,248,${alpha})`;
+						ctx.lineWidth = .8*dpr;
+						ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+					}
+				}
+			}
+			for(const p of points){
+				const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*5);
+				g.addColorStop(0,'rgba(250,204,21,.9)');
+				g.addColorStop(.35,'rgba(56,189,248,.65)');
+				g.addColorStop(1,'rgba(56,189,248,0)');
+				ctx.fillStyle=g; ctx.beginPath(); ctx.arc(p.x,p.y,p.r*5,0,Math.PI*2); ctx.fill();
+			}
+			requestAnimationFrame(draw);
+		}
+		window.addEventListener('resize', resize);
+		window.addEventListener('mousemove', e => { mouse.x=e.clientX; mouse.y=e.clientY; mouse.active=true; });
+		window.addEventListener('mouseleave', () => mouse.active=false);
+		resize(); draw();
+	}
+
+	// Curseur premium + magnetic buttons/cards.
+	const cursor = document.querySelector('.sox27-cursor');
+	if(cursor && !prefersReduced){
+		window.addEventListener('mousemove', e => {
+			cursor.style.left = e.clientX + 'px';
+			cursor.style.top = e.clientY + 'px';
+		});
+		const hoverables = document.querySelectorAll('a, button, .button, input[type="submit"], .posts article, .features article, .box');
+		hoverables.forEach(el => {
+			el.addEventListener('mouseenter', () => cursor.classList.add('is-hovering'));
+			el.addEventListener('mouseleave', () => cursor.classList.remove('is-hovering'));
+		});
+	}
+
+	const magnetic = document.querySelectorAll('.button, .posts article, .features article, .so-stat-card, .so-experience-card, .box');
+	magnetic.forEach(el => {
+		el.classList.add('sox27-magnetic');
+		el.addEventListener('mousemove', e => {
+			if(prefersReduced || innerWidth < 800) return;
+			const rect = el.getBoundingClientRect();
+			const x = (e.clientX - rect.left - rect.width/2) / rect.width;
+			const y = (e.clientY - rect.top - rect.height/2) / rect.height;
+			el.style.transform = `translateY(-8px) rotateX(${(-y*4).toFixed(2)}deg) rotateY(${(x*5).toFixed(2)}deg)`;
+		});
+		el.addEventListener('mouseleave', () => { el.style.transform = ''; });
+	});
+
+	// Typewriter léger dans le terminal IA.
+	function typeTerminal(){
+		const panel = document.querySelector('.sox27-terminal-lines');
+		if(!panel || prefersReduced) return;
+		const lines = Array.from(panel.querySelectorAll('span')).map(s => s.textContent);
+		panel.innerHTML = '';
+		let i=0;
+		function nextLine(){
+			if(i>=lines.length) return;
+			const span=document.createElement('span'); panel.appendChild(span);
+			let k=0, text=lines[i++];
+			const timer=setInterval(()=>{
+				span.textContent = text.slice(0, ++k);
+				if(k>=text.length){ clearInterval(timer); setTimeout(nextLine, 120); }
+			}, 18);
+		}
+		const obs = new IntersectionObserver(entries => {
+			if(entries[0].isIntersecting){ nextLine(); obs.disconnect(); }
+		}, {threshold:.3});
+		obs.observe(panel);
+	}
+	typeTerminal();
+})();
+</script>
+
+	
+<script>
+/* ===== SO X27 FULL EXPERIENCE : 3D particles, loader transition, magnetic cards, AI terminal ===== */
+(function(){
+	const body = document.body;
+
+	// Loader transition
+	window.addEventListener('load', () => {
+		setTimeout(() => body.classList.add('sox27-loaded'), 2300);
+	});
+
+	// AI terminal typing
+	const terminal = document.querySelector('[data-terminal-lines]');
+	if (terminal && !terminal.dataset.started) {
+		terminal.dataset.started = "true";
+		const lines = [
+			"Initializing SO X27...",
+			"Loading neural architecture...",
+			"Industrial vision modules loaded...",
+			"Automation systems synchronized...",
+			"ROS2 & robotics environment standby...",
+			"Keyence vision logic ready...",
+			"System ready."
+		];
+		let i = 0;
+		function typeLine(){
+			if(i >= lines.length) return;
+			const span = document.createElement('span');
+			terminal.appendChild(span);
+			let k = 0;
+			const text = lines[i++];
+			const timer = setInterval(() => {
+				span.textContent = text.slice(0, ++k);
+				if(k >= text.length){
+					clearInterval(timer);
+					setTimeout(typeLine, 180);
+				}
+			}, 24);
+		}
+		const obs = new IntersectionObserver(entries => {
+			if(entries[0].isIntersecting){ typeLine(); obs.disconnect(); }
+		}, {threshold:.35});
+		obs.observe(terminal);
+	}
+
+	// Skill bars reveal
+	const skillRows = document.querySelectorAll('.sox27-skill-row');
+	if(skillRows.length){
+		const obs = new IntersectionObserver(entries => {
+			entries.forEach(e => {
+				if(e.isIntersecting) e.target.classList.add('so-visible');
+			});
+		}, {threshold:.25});
+		skillRows.forEach(row => obs.observe(row));
+	}
+
+	// Custom cursor + spotlight
+	const cursor = document.querySelector('.sox27-cursor');
+	let mx = innerWidth/2, my = innerHeight/2, cx = mx, cy = my;
+	window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+	function cursorLoop(){
+		if(cursor){
+			cx += (mx - cx) * 0.18;
+			cy += (my - cy) * 0.18;
+			cursor.style.left = cx + 'px';
+			cursor.style.top = cy + 'px';
+		}
+		requestAnimationFrame(cursorLoop);
+	}
+	cursorLoop();
+
+	// Magnetic hover on cards/buttons
+	const magnetic = document.querySelectorAll('.button, .posts article, .features article, .sox27-identity-card, .sox27-timeline-item, .so-stat-card, .so-experience-card, .so-contact-card');
+	magnetic.forEach(el => {
+		el.classList.add('sox27-magnetic');
+		el.addEventListener('mousemove', e => {
+			const r = el.getBoundingClientRect();
+			const x = e.clientX - r.left - r.width/2;
+			const y = e.clientY - r.top - r.height/2;
+			const strength = el.classList.contains('button') ? 0.18 : 0.055;
+			el.style.transform = `translate3d(${x*strength}px, ${y*strength}px, 0) rotateX(${-y*0.015}deg) rotateY(${x*0.015}deg)`;
+			if(cursor) cursor.classList.add('is-hot');
+		});
+		el.addEventListener('mouseleave', () => {
+			el.style.transform = '';
+			if(cursor) cursor.classList.remove('is-hot');
+		});
+	});
+
+	// Canvas 3D-like neural background
+	const canvas = document.getElementById('sox27-canvas-bg');
+	if(canvas){
+		const ctx = canvas.getContext('2d');
+		let w, h, dpr, particles;
+
+		function resize(){
+			dpr = Math.min(window.devicePixelRatio || 1, 2);
+			w = canvas.width = Math.floor(innerWidth * dpr);
+			h = canvas.height = Math.floor(innerHeight * dpr);
+			canvas.style.width = innerWidth + 'px';
+			canvas.style.height = innerHeight + 'px';
+			const count = innerWidth < 760 ? 44 : 78;
+			particles = Array.from({length: count}, (_, i) => ({
+				x: Math.random()*w,
+				y: Math.random()*h,
+				z: Math.random()*1 + .2,
+				vx: (Math.random()-.5) * .28 * dpr,
+				vy: (Math.random()-.5) * .28 * dpr,
+				r: (Math.random()*1.8 + 1.1) * dpr,
+				phase: Math.random()*Math.PI*2
+			}));
+		}
+		resize();
+		window.addEventListener('resize', resize);
+
+		function draw(){
+			ctx.clearRect(0,0,w,h);
+			const mouseX = mx * dpr, mouseY = my * dpr;
+
+			for(const p of particles){
+				const dxm = (mouseX - p.x) * 0.000018;
+				const dym = (mouseY - p.y) * 0.000018;
+				p.x += p.vx + dxm * p.z * 80;
+				p.y += p.vy + dym * p.z * 80;
+				p.phase += 0.012;
+				if(p.x < -50) p.x = w+50; if(p.x > w+50) p.x = -50;
+				if(p.y < -50) p.y = h+50; if(p.y > h+50) p.y = -50;
+			}
+
+			for(let i=0;i<particles.length;i++){
+				for(let j=i+1;j<particles.length;j++){
+					const a=particles[i], b=particles[j];
+					const dx=a.x-b.x, dy=a.y-b.y;
+					const dist=Math.sqrt(dx*dx+dy*dy);
+					const max = (innerWidth < 760 ? 105 : 155) * dpr;
+					if(dist < max){
+						const alpha = (1 - dist/max) * .28;
+						const grad = ctx.createLinearGradient(a.x,a.y,b.x,b.y);
+						grad.addColorStop(0, `rgba(56,189,248,${alpha})`);
+						grad.addColorStop(0.5, `rgba(250,204,21,${alpha*.55})`);
+						grad.addColorStop(1, `rgba(139,92,246,${alpha})`);
+						ctx.strokeStyle = grad;
+						ctx.lineWidth = .8 * dpr;
+						ctx.beginPath();
+						ctx.moveTo(a.x,a.y);
+						ctx.lineTo(b.x,b.y);
+						ctx.stroke();
+					}
+				}
+			}
+
+			for(const p of particles){
+				const pulse = 0.6 + Math.sin(p.phase)*0.35;
+				ctx.beginPath();
+				ctx.fillStyle = `rgba(186,230,253,${0.45 + pulse*.25})`;
+				ctx.shadowColor = 'rgba(56,189,248,.65)';
+				ctx.shadowBlur = 14 * dpr;
+				ctx.arc(p.x, p.y, p.r*(1+pulse*.45), 0, Math.PI*2);
+				ctx.fill();
+				ctx.shadowBlur = 0;
+			}
+
+			requestAnimationFrame(draw);
+		}
+		draw();
+	}
+})();
+</script>
+
+			<script src="assets/js/sox27-platform.js"></script>
 	</body>
 </html>
