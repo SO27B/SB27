@@ -27,7 +27,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 BASE_DIR = Path(__file__).resolve().parent
-MAIN_FILE = BASE_DIR / "main.py"
+MAIN_FILE =Path (r"C:\Users\sofia\so_x27\main.py")
 
 app = Flask(__name__)
 CORS(app)

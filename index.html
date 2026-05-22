@@ -3,7 +3,7 @@
 ========================= -->
 <!DOCTYPE HTML>
 <!--
-	Editorial by HTML5 UP
+	Editorial by HTML5 UPh
 	html5up.net | @ajlkn
 -->
 <html>
@@ -1363,6 +1363,7 @@
 	</div>
 </div>
 <canvas id="sox27-canvas-bg"></canvas>
+
 <div class="sox27-cursor" aria-hidden="true"></div>
 
 
@@ -1508,6 +1509,27 @@
 								</div>
 							</div>
 						</div>
+						<section id="sox27-real-bridge" class="x27-section">
+  <h2>Connexion assistant vocal réel</h2>
+  <p>Test de connexion entre le portfolio et SO X27 local.</p>
+
+  <button data-x27-test-bridge>
+    Test bridge
+  </button>
+ 
+<button onclick="fetch('http://127.0.0.1:8765/command', {
+  method:'POST',
+  headers:{'Content-Type':'application/json'},
+  body: JSON.stringify({command:'launch'})
+}).then(r=>r.json()).then(d=>alert(d.message))">
+  Lancer SO X27
+</button>
+  
+
+  <div data-x27-local-log>
+    <div>Bridge client ready</div>
+  </div>
+</section>
 					</section>
 
 					<!-- ===== TIMELINE PROFESSIONNELLE ===== -->
