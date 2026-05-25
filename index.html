@@ -1429,6 +1429,56 @@
   }
 </style>
 
+<!-- ===== CORRECTION AFFICHAGE PC + MOBILE : HERO + CARTES PROJETS ===== -->
+<style id="sox27-display-final-fix">
+html,body{max-width:100%;overflow-x:hidden!important}
+#main>.inner{width:min(1180px,calc(100vw - 2rem))!important;margin-left:auto!important;margin-right:auto!important}
+
+/* HERO */
+#banner{display:grid!important;grid-template-columns:minmax(0,1.45fr) minmax(260px,.55fr)!important;gap:clamp(1.5rem,4vw,3rem)!important;align-items:center!important;min-height:auto!important;padding:clamp(1.35rem,4vw,3rem)!important}
+#banner .content,#banner .image{width:100%!important;max-width:100%!important}
+#banner h1{font-size:clamp(2.4rem,5vw,4.2rem)!important;line-height:1.02!important;letter-spacing:-.065em!important;margin-bottom:1.2rem!important;max-width:820px!important}
+#banner .so-hero-subtitle{max-width:760px!important;font-size:clamp(1.05rem,1.5vw,1.35rem)!important;line-height:1.75!important}
+#banner>.image.object{justify-self:end!important;width:min(100%,300px)!important}
+#banner>.image.object img{width:100%!important;height:auto!important;display:block!important;object-fit:cover!important}
+#banner .actions{display:flex!important;flex-wrap:wrap!important;gap:.75rem!important;align-items:center!important}
+#banner .actions li{margin:0!important}
+
+/* CARTES PROJETS */
+#projects .posts{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:clamp(1.2rem,3vw,2rem)!important;align-items:stretch!important}
+#projects .posts article{width:100%!important;min-width:0!important;margin:0!important;padding:1.35rem!important;display:flex!important;flex-direction:column!important;overflow:visible!important}
+#projects .posts article .image,#projects .posts article .image.fit{width:100%!important;display:block!important;overflow:hidden!important;border-radius:14px!important;margin-bottom:1rem!important}
+#projects .posts article .image img,#projects .posts article .image.fit img{width:100%!important;height:230px!important;object-fit:cover!important;display:block!important}
+#projects .posts article h3{min-height:4.2em!important;margin:.9rem 0 .9rem!important;font-size:1.02rem!important;line-height:1.35!important}
+#projects .so-project-tags{display:flex!important;flex-wrap:wrap!important;gap:.55rem!important;margin:0 0 1rem 0!important}
+#projects .so-project-tags span{white-space:nowrap!important}
+#projects .posts article .actions{margin-top:auto!important;padding-top:1rem!important;display:flex!important;flex-wrap:wrap!important;gap:.75rem!important;align-items:center!important;overflow:visible!important}
+#projects .posts article .actions li{margin:0!important;padding:0!important;flex:1 1 120px!important;min-width:120px!important}
+#projects .posts article .actions .button{width:100%!important;min-width:0!important;white-space:normal!important;text-align:center!important;padding-left:.95rem!important;padding-right:.95rem!important}
+#projects .posts article .actions .button.primary{font-size:.78rem!important;line-height:1.25!important}
+
+@media screen and (max-width:1100px){
+#projects .posts{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+#banner{grid-template-columns:1fr!important}
+#banner>.image.object{justify-self:center!important;width:min(100%,300px)!important}
+}
+
+@media screen and (max-width:736px){
+#main>.inner{width:min(100%,calc(100vw - 1.1rem))!important}
+#header{margin-left:0!important;margin-right:0!important}
+#banner{padding:1.1rem!important;border-radius:24px!important;gap:1.2rem!important}
+#banner h1{font-size:clamp(2rem,11vw,2.75rem)!important;line-height:1.04!important;letter-spacing:-.055em!important}
+#banner .so-hero-tags{gap:.5rem!important}
+#banner>.image.object{width:min(100%,240px)!important}
+#projects .posts{grid-template-columns:1fr!important;gap:1rem!important}
+#projects .posts article{padding:1rem!important;border-radius:22px!important}
+#projects .posts article h3{min-height:0!important;font-size:1rem!important}
+#projects .posts article .image img,#projects .posts article .image.fit img{height:205px!important}
+#projects .posts article .actions{display:grid!important;grid-template-columns:1fr!important;gap:.65rem!important}
+#projects .posts article .actions li{min-width:0!important;width:100%!important}
+#projects .posts article .actions .button{width:100%!important;font-size:.82rem!important}
+}
+</style>
 </head>
 
 	<body class="is-preload">
