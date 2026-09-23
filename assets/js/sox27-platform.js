@@ -231,6 +231,110 @@
 })();
 
 
+/* ===== SO X27 Ultra WAW interactions ===== */
+(function(){
+  const $ = (s, root=document) => root.querySelector(s);
+  const $$ = (s, root=document) => Array.from(root.querySelectorAll(s));
+
+  function setSpotlight(e){
+    const x = (e.clientX / window.innerWidth * 100).toFixed(2) + '%';
+    const y = (e.clientY / window.innerHeight * 100).toFixed(2) + '%';
+    document.documentElement.style.setProperty('--waw-x', x);
+    document.documentElement.style.setProperty('--waw-y', y);
+  }
+  window.addEventListener('pointermove', setSpotlight, {passive:true});
+
+  const bannerContent = $('#banner .content');
+  if(bannerContent && !$('.sox27-hud-strip', bannerContent)){
+    const hud = document.createElement('div');
+    hud.className = 'sox27-hud-strip';
+    hud.innerHTML = `
+      <div><strong data-waw-count="96">0</strong><span>Vision precision</span></div>
+      <div><strong data-waw-count="24">0</strong><span>Systemes actifs</span></div>
+      <div><strong data-waw-count="7">0</strong><span>Modules IA</span></div>
+      <div><strong data-waw-count="100">0</strong><span>Mode futur</span></div>
+    `;
+    const tags = $('.so-hero-tags', bannerContent);
+    if(tags) tags.insertAdjacentElement('afterend', hud);
+    else bannerContent.appendChild(hud);
+  }
+
+  const revealItems = [
+    '#about',
+    '#terminal-ia',
+    '#ai-skills',
+    '#timeline',
+    '#projects',
+    '#simulation-convoyeur',
+    '.features article',
+    '.posts article',
+    '.so-stat-card',
+    '.so-experience-card',
+    '.sox27-identity-card',
+    '.sox27-timeline-item',
+    '.x27-project-card',
+    '.x27-vision-card'
+  ].flatMap(sel => $$(sel));
+
+  revealItems.forEach(el => el.classList.add('sox27-reveal'));
+
+  const counterEls = $$('[data-waw-count]');
+  let countersDone = false;
+
+  function runCounters(){
+    if(countersDone) return;
+    countersDone = true;
+    counterEls.forEach(el => {
+      const target = Number(el.dataset.wawCount || 0);
+      const suffix = target >= 90 ? '%' : '+';
+      const start = performance.now();
+      function tick(now){
+        const p = Math.min(1, (now - start) / 950);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased) + suffix;
+        if(p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+  }
+
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          if(entry.target.matches('#banner, #about') || entry.target.querySelector('[data-waw-count]')){
+            runCounters();
+          }
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold: .14});
+
+    revealItems.forEach(el => io.observe(el));
+    const banner = $('#banner');
+    if(banner) io.observe(banner);
+  } else {
+    revealItems.forEach(el => el.classList.add('is-visible'));
+    runCounters();
+  }
+
+  setTimeout(runCounters, 850);
+
+  $$('.button, button, .posts article, .features article, .sox27-identity-card, .so-stat-card, .so-experience-card').forEach(el => {
+    el.addEventListener('pointermove', e => {
+      const r = el.getBoundingClientRect();
+      const rx = ((e.clientY - r.top) / r.height - .5) * -5;
+      const ry = ((e.clientX - r.left) / r.width - .5) * 5;
+      el.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`;
+    }, {passive:true});
+    el.addEventListener('pointerleave', () => {
+      el.style.transform = '';
+    });
+  });
+})();
+
+
 /* ===== SO X27 : real bridge, realtime browser AI, advanced Three.js core ===== */
 (function(){
   const $ = (s, root=document) => root.querySelector(s);

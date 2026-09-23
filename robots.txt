@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://so27b.github.io/SB27/sitemap.xml

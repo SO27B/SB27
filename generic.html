@@ -8,12 +8,14 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<html>
+<html lang="fr">
 	<head>
 		<title>Détails des projets | SOFIANE BADJA</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<meta name="theme-color" content="#09090f" />
+		<link rel="icon" href="images/so.jpeg" type="image/jpeg" />
 
 		<style>
 			.project-detail { max-width: 980px; margin: 0 auto; }
@@ -646,7 +648,16 @@
 				#banner .content,
 				#banner .image { width: 100% !important; }
 			}
-		</style>
+		
+/* ===== SO X27 : capture + vidéo responsive ===== */
+.sox27-agent-showcase{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.25fr);gap:1rem;align-items:start;margin:1rem 0 1.5rem;}
+.sox27-agent-showcase .project-box{margin:0!important;min-width:0;padding:0!important;overflow:hidden!important;}
+.sox27-agent-capture img{width:100%;height:auto;display:block;object-fit:contain;background:#020617;}
+.sox27-agent-video video{display:block;width:100%;aspect-ratio:16/9;height:auto;object-fit:contain;background:#000;max-width:100%;}
+.sox27-video-caption{padding:.8rem 1rem;color:#cbd5e1;font-size:.9rem;line-height:1.5;background:rgba(2,6,23,.72);border-top:1px solid rgba(255,255,255,.08);}
+@media screen and (max-width:980px){.sox27-agent-showcase{grid-template-columns:1fr;gap:.9rem;}.sox27-agent-showcase .project-box:hover{transform:none!important;}}
+@media screen and (max-width:736px){.sox27-agent-showcase{margin:.8rem 0 1.2rem;}.sox27-video-caption{font-size:.82rem;padding:.7rem .8rem;}}
+</style>
 
 	
 
@@ -1210,7 +1221,11 @@
 		</style>
 
 			<link rel="stylesheet" href="assets/css/sox27-platform.css" />
-	</head>
+	
+<style id="so-final-qa">
+html,body{max-width:100%;overflow-x:hidden} img,video,iframe,svg{max-width:100%} a,.button,button{touch-action:manipulation;-webkit-tap-highlight-color:transparent} a:focus-visible,.button:focus-visible,button:focus-visible{outline:3px solid #38bdf8!important;outline-offset:4px} .project-media{align-items:stretch} .project-box img{max-width:100%;height:auto} @media(max-width:760px){.project-detail{width:100%;max-width:100%;}.project-media{display:grid!important;grid-template-columns:1fr!important;gap:1rem!important}.actions{display:grid!important;grid-template-columns:1fr!important;gap:.65rem!important}.actions li,.actions .button{width:100%!important;min-width:0!important;margin:0!important}}
+</style>
+</head>
 	<body class="is-preload">
 		<canvas id="sox27-neural-core" aria-hidden="true"></canvas>
 
@@ -1250,6 +1265,9 @@
 <div class="box">
 
 	<ul class="toc">
+		<li><a href="#sox27-agent"> SO X27 — Agent IA personnel pour PC</a></li>
+		<li><a href="#sovix"> SOVIX — Industrial Vision IV4</a></li>
+		<li><a href="#sovix-3d"> SOVIX 3D — Simulation de contrôle vision Keyence IV4</a></li>
 		<li><a href="#stage"> Stage Automaticien — Cofidur EMS</a></li>
 		<li><a href="#kuka"> Pilotage d’un bras robot industriel KUKA</a></li>
 		<li><a href="#tia-portal"> Automatisme industriel avec TIA Portal (Siemens S7-1200)</a></li>
@@ -1264,6 +1282,125 @@
 		<li><a href="#image"> Traitement d’images — Contrôle qualité non destructif </a></li>
 	</ul>
 </div>
+
+<section id="sox27-agent">
+
+    <h2>SO X27 — Agent IA personnel pour PC</h2>
+    <div class="project-summary">
+        <div><strong>Contexte</strong>Projet personnel d’assistant intelligent orienté interaction homme-machine et automatisation du poste de travail.</div>
+        <div><strong>Objectif</strong>Créer un agent capable de comprendre une demande, piloter des fonctions du PC et centraliser plusieurs outils dans une interface unique.</div>
+        <div><strong>Outils</strong>Python, PyQt6, Gemini / Ollama, API système, serveur bridge local.</div>
+        <div><strong>Résultat</strong>Architecture modulaire avec interface HUD, commandes PC, traitement de fichiers et connexion locale sécurisée entre le navigateur et Python.</div>
+    </div>
+
+    <div class="project-media sox27-agent-showcase">
+        <div class="project-box sox27-agent-capture">
+            <img src="images/sox27-agent-capture.png" width="1207" height="871" alt="Interface de l’agent IA SO X27" loading="lazy" decoding="async" />
+        </div>
+        <div class="project-box sox27-agent-video">
+            <video controls playsinline preload="metadata" width="1024" height="576" poster="images/sox27-agent-capture.png" aria-label="Démonstration vidéo de l’agent IA SO X27">
+                <source src="media/sox27-agent-demo.mp4" type="video/mp4">
+                Votre navigateur ne prend pas en charge la lecture vidéo HTML5.
+            </video>
+            <div class="sox27-video-caption">Démonstration de SO X27 — interface, interaction et automatisation du PC.</div>
+        </div>
+    </div>
+
+    <p>
+        <strong>SO X27</strong> est un agent IA personnel que j’ai développé pour explorer une interaction plus naturelle entre l’utilisateur, l’intelligence artificielle et le système d’exploitation. Le projet repose sur une interface graphique en <strong>Python / PyQt6</strong> et une architecture pensée pour regrouper dans un même environnement la conversation, l’exécution de commandes et l’automatisation de tâches sur PC.
+    </p>
+    <p>
+        L’agent peut s’appuyer sur des moteurs IA tels que <strong>Gemini</strong> ou <strong>Ollama</strong>, puis déclencher des fonctions locales selon la demande : commandes système, lancement d’outils, traitement de fichiers et autres actions automatisées. Une passerelle locale Python est également prévue pour permettre une communication contrôlée entre les interfaces web et les fonctions exécutées sur la machine.
+    </p>
+    <p>
+        Ce projet me permet de travailler à l’intersection de plusieurs domaines : <strong>IA générative, développement logiciel, architecture modulaire, automatisation, interaction homme-machine et intégration système</strong>. SO X27 constitue également une base évolutive pour intégrer progressivement de nouvelles capacités et connecter d’autres outils techniques.
+    </p>
+
+    <div class="so-project-tags">
+        <span>Python</span>
+        <span>PyQt6</span>
+        <span>Gemini</span>
+        <span>Ollama</span>
+        <span>Automatisation PC</span>
+        <span>IA générative</span>
+        <span>Bridge local</span>
+    </div>
+
+    <ul class="actions">
+        <li><a href="index.html#projects" class="button js-smart-back">← Retour</a></li>
+    </ul>
+
+</section>
+
+
+<section id="sovix">
+
+    <h2>SOVIX — Industrial Vision IV4</h2>
+    <div class="project-summary">
+        <div><strong>Contexte</strong>Valorisation web premium du projet de vision industrielle développé chez Cofidur EMS.</div>
+        <div><strong>Objectif</strong>Présenter de manière claire, moderne et interactive le fonctionnement du contrôle PPVS autour de la caméra Keyence IV4.</div>
+        <div><strong>Outils</strong>HTML, CSS, JavaScript, UX/UI, structuration de contenu technique, branding SOVIX.</div>
+        <div><strong>Résultat</strong>Application web aboutie regroupant contexte projet, logique industrielle, supervision, vidéo terrain et accès à la simulation 3D.</div>
+    </div>
+
+    <div class="project-media">
+        <div class="project-box logo-box">
+            <img src="images/sovix-logo.png" alt="Logo SOVIX" loading="lazy" decoding="async" />
+        </div>
+    </div>
+
+    <p><strong>SOVIX</strong> est l’application web que j’ai conçue pour transformer un projet industriel réel en une démonstration digitale claire, crédible et moderne. L’idée n’était pas simplement de créer une page vitrine, mais une interface capable d’expliquer le contexte industriel, la logique de contrôle PPVS, les scénarios OK/NOK et la place de la vision industrielle dans un environnement de production.</p>
+    <p>L’application met en avant la caméra <strong>Keyence IV4</strong>, le fonctionnement du poste de contrôle, les critères de détection, la logique de réinspection et l’intégration globale dans une approche <strong>Industrie 4.0</strong>. Elle est pensée pour être consultée aussi bien par un recruteur, un jury, qu’un professionnel souhaitant comprendre rapidement la valeur du projet.</p>
+    <p>Avec SOVIX, j’ai travaillé la <strong>hiérarchisation d’informations techniques</strong>, l’expérience utilisateur, la cohérence visuelle et la mise en scène d’un projet industriel réel sous la forme d’un produit digital abouti.</p>
+
+    <div class="so-project-tags">
+        <span>HTML / CSS / JS</span>
+        <span>Vision industrielle</span>
+        <span>Keyence IV4</span>
+        <span>PPVS</span>
+        <span>Industrie 4.0</span>
+    </div>
+
+    <ul class="actions">
+        <li><a href="https://sovix-so.netlify.app/" target="_blank" class="button primary">Découvrir SOVIX</a></li>
+        <li><a href="index.html#projects" class="button js-smart-back">← Retour</a></li>
+    </ul>
+
+</section>
+
+<section id="sovix-3d">
+
+    <h2>SOVIX 3D — Simulation de contrôle vision Keyence IV4</h2>
+    <div class="project-summary">
+        <div><strong>Contexte</strong>Simulation 3D pédagogique et technique d’un poste de contrôle qualité industriel.</div>
+        <div><strong>Objectif</strong>Reproduire le comportement du convoyeur, des entrées/sorties et du cycle OK/NOK avec une caméra Keyence IV4.</div>
+        <div><strong>Outils</strong>HTML, CSS, JavaScript, Three.js, logique de supervision, UX responsive.</div>
+        <div><strong>Résultat</strong>Simulation 3D interactive consultable sur PC, tablette et mobile avec commandes, supervision et scénarios industriels.</div>
+    </div>
+
+    <div class="project-media">
+        <div class="project-box">
+            <img src="images/sovix-3d-preview.png" alt="Simulation 3D SOVIX Keyence IV4" loading="lazy" decoding="async" />
+        </div>
+    </div>
+
+    <p>Cette simulation 3D a été développée pour représenter visuellement la cellule de contrôle qualité : <strong>convoyeur, carte électronique, caméra Keyence IV4, supervision des E/S et logique de réinspection opérateur</strong>. Elle permet de démontrer le fonctionnement du poste, y compris les cas simples, les scénarios A/B et les défauts entraînant une reprise manuelle.</p>
+    <p>Un travail particulier a été réalisé sur le <strong>responsive</strong> pour que la simulation reste exploitable sur <strong>ordinateur, tablette et téléphone</strong>, avec un cadrage spécifique selon l’appareil et une interface adaptée au tactile.</p>
+
+    <div class="so-project-tags">
+        <span>Simulation 3D</span>
+        <span>Supervision</span>
+        <span>OK/NOK</span>
+        <span>Responsive</span>
+        <span>Keyence IV4</span>
+    </div>
+
+    <ul class="actions">
+        <li><a href="simulation-3d.html" class="button primary sb27-local-nav">Voir la simulation</a></li>
+        <li><a href="index.html#projects" class="button js-smart-back">← Retour</a></li>
+    </ul>
+
+</section>
 
 <section id="stage">
 
@@ -1280,12 +1417,12 @@
 
         <!-- TA PHOTO -->
         <div class="project-box">
-            <img src="images/cof.jpeg" alt="Stage Cofidur EMS">
+            <img src="images/cof.jpeg" alt="Stage Cofidur EMS" loading="lazy" decoding="async" />
         </div>
 
         <!-- LOGO -->
         <div class="project-box logo-box">
-            <img src="images/cofidur.jpg" alt="Logo Cofidur EMS">
+            <img src="images/cofidur.jpg" alt="Logo Cofidur EMS" loading="lazy" decoding="async" />
         </div>
 
     </div>
@@ -1306,7 +1443,7 @@
     </p>
 
     <ul class="actions">
-        <li><a href="index.html#projects" class="button">← Retour aux projets</a></li>
+        <li><a href="index.html#projects" class="button js-smart-back">← Retour</a></li>
     </ul>
 
 </section>
@@ -1324,13 +1461,13 @@
     <div class="row project-media">
         <div class="col-6 col-12-small">
             <span class="image fit project-box">
-                <img src="images/kukanodered.png" alt="Robot industriel KUKA">
+                <img src="images/kukanodered.png" alt="Robot industriel KUKA" loading="lazy" decoding="async" />
             </span>
         </div>
 
         <div class="col-6 col-12-small">
             <div class="project-box">
-                <video controls>
+                <video controls playsinline preload="metadata">
                     <source src="images/robot_kuka.mp4" type="video/mp4">
                     Votre navigateur ne supporte pas la vidéo.
                 </video>
@@ -1351,7 +1488,7 @@
     </p>
 
     <ul class="actions">
-        <li><a href="index.html#projects" class="button">← Retour aux projets</a></li>
+        <li><a href="index.html#projects" class="button js-smart-back">← Retour</a></li>
     </ul>
 </section>
 
@@ -1367,13 +1504,13 @@
     <div class="project-media">
         <div>
             <div class="project-box">
-                <img src="images/aqwzsx.png" alt="Projet TIA Portal Siemens S7-1200">
+                <img src="images/aqwzsx.png" alt="Projet TIA Portal Siemens S7-1200" loading="lazy" decoding="async" />
             </div>
         </div>
 
         <div>
             <div class="project-box">
-                <video controls>
+                <video controls playsinline preload="metadata">
                     <source src="images/v1.mp4" type="video/mp4">
                     Votre navigateur ne supporte pas la vidéo.
                 </video>
@@ -1411,7 +1548,7 @@
     </p>
 
     <ul class="actions">
-        <li><a href="index.html#projects" class="button">← Retour aux projets</a></li>
+        <li><a href="index.html#projects" class="button js-smart-back">← Retour</a></li>
     </ul>
 </section>
 
@@ -1423,14 +1560,14 @@
     <div class="project-media">
 
         <div class="project-box">
-            <video controls>
+            <video controls playsinline preload="metadata">
                 <source src="images/c1d.mp4" type="video/mp4">
                 Votre navigateur ne supporte pas la vidéo.
             </video>
         </div>
 
         <div class="project-box">
-            <video controls>
+            <video controls playsinline preload="metadata">
                 <source src="images/c1e.mp4" type="video/mp4">
                 Votre navigateur ne supporte pas la vidéo.
             </video>
@@ -1454,7 +1591,7 @@
     </p>
 
     <ul class="actions">
-        <li><a href="index.html#projects" class="button">← Retour aux projets</a></li>
+        <li><a href="index.html#projects" class="button js-smart-back">← Retour</a></li>
     </ul>
 
 </section>
@@ -1468,12 +1605,12 @@
 
         <!-- IMAGE -->
         <div class="project-box">
-            <img src="images/a1234.png" alt="Conception moteur V6 Siemens NX">
+            <img src="images/a1234.png" alt="Conception moteur V6 Siemens NX" loading="lazy" decoding="async" />
         </div>
 
         <!-- VIDEO -->
         <div class="project-box">
-            <video controls>
+            <video controls playsinline preload="metadata">
                 <source src="images/s1.mp4" type="video/mp4">
                 Votre navigateur ne supporte pas la vidéo.
             </video>
@@ -1495,7 +1632,7 @@
     </p>
 
     <ul class="actions">
-        <li><a href="index.html#projects" class="button">← Retour aux projets</a></li>
+        <li><a href="index.html#projects" class="button js-smart-back">← Retour</a></li>
     </ul>
 
 </section>
@@ -1509,9 +1646,9 @@
 
 	<div class="project-gallery">
 		<div class="row gtr-50 gtr-uniform">
-			<div class="col-4"><span class="image fit"><img src="images/Réservoir industriel en acier inoxydable.png" alt="Cuve industrielle réelle"></span></div>
-			<div class="col-4"><span class="image fit"><img src="images/schema.jpg" alt="Schéma de régulation Simulink"></span></div>
-			<div class="col-4"><span class="image fit"><img src="images/cuve.jpg" alt="Schéma de principe de la cuve"></span></div>
+			<div class="col-4"><span class="image fit"><img src="images/Réservoir industriel en acier inoxydable.png" alt="Cuve industrielle réelle" loading="lazy" decoding="async" /></span></div>
+			<div class="col-4"><span class="image fit"><img src="images/schema.jpg" alt="Schéma de régulation Simulink" loading="lazy" decoding="async" /></span></div>
+			<div class="col-4"><span class="image fit"><img src="images/cuve.jpg" alt="Schéma de principe de la cuve" loading="lazy" decoding="async" /></span></div>
 		</div>
 	</div>
 
@@ -1531,9 +1668,9 @@
 
 	<div class="project-gallery">
 		<div class="row gtr-50 gtr-uniform">
-			<div class="col-4"><span class="image fit"><img src="images/servo.png" alt="Servomoteur à courant continu"></span></div>
-			<div class="col-4"><span class="image fit"><img src="images/simu.jpg" alt="Schéma de simulation Simulink"></span></div>
-			<div class="col-4"><span class="image fit"><img src="images/plaque.jpg" alt="Plaque signalétique du moteur"></span></div>
+			<div class="col-4"><span class="image fit"><img src="images/servo.png" alt="Servomoteur à courant continu" loading="lazy" decoding="async" /></span></div>
+			<div class="col-4"><span class="image fit"><img src="images/simu.jpg" alt="Schéma de simulation Simulink" loading="lazy" decoding="async" /></span></div>
+			<div class="col-4"><span class="image fit"><img src="images/plaque.jpg" alt="Plaque signalétique du moteur" loading="lazy" decoding="async" /></span></div>
 		</div>
 	</div>
 
@@ -1549,7 +1686,7 @@
 	</p>
 
 	<ul class="actions">
-		<li><a href="index.html#projects" class="button">← Retour aux projets</a></li>
+		<li><a href="index.html#projects" class="button js-smart-back">← Retour</a></li>
 	</ul>
 
 	<hr class="major" />
@@ -1562,9 +1699,9 @@
 	<div class="project-gallery">
 		<div class="row gtr-50 gtr-uniform">
 
-			<div class="col-4"><span class="image fit"><img src="images/robot.png" alt="Robot Arduino (PNG)"></span></div>
-			<div class="col-4"><span class="image fit"><img src="images/code.jpeg" alt="Code Arduino (JPEG)"></span></div>
-			<div class="col-4"><span class="image fit"><img src="images/tra.png" alt="Trajectoire (PNG)"></span></div>
+			<div class="col-4"><span class="image fit"><img src="images/robot.png" alt="Robot Arduino (PNG)" loading="lazy" decoding="async" /></span></div>
+			<div class="col-4"><span class="image fit"><img src="images/code.jpeg" alt="Code Arduino (JPEG)" loading="lazy" decoding="async" /></span></div>
+			<div class="col-4"><span class="image fit"><img src="images/tra.png" alt="Trajectoire (PNG)" loading="lazy" decoding="async" /></span></div>
 
 		</div>
 	</div>
@@ -1605,7 +1742,7 @@
 	</p>
 
 	<ul class="actions">
-		<li><a href="index.html#projects" class="button">← Retour aux projets</a></li>
+		<li><a href="index.html#projects" class="button js-smart-back">← Retour</a></li>
 	</ul>
 
 	<hr class="major" />
@@ -1617,9 +1754,9 @@
 	<div class="project-gallery">
 		<div class="row gtr-50 gtr-uniform">
 
-			<div class="col-4"><span class="image fit"><img src="images/limo.png" alt="Robot Arduino (PNG)"></span></div>
-			<div class="col-4"><span class="image fit"><img src="images/codelimo.jpg" alt="Code Arduino (JPEG)"></span></div>
-			<div class="col-4"><span class="image fit"><img src="images/gazebo.jpg" alt="Code Arduino (JPEG)"></span></div>
+			<div class="col-4"><span class="image fit"><img src="images/limo.png" alt="Robot Arduino (PNG)" loading="lazy" decoding="async" /></span></div>
+			<div class="col-4"><span class="image fit"><img src="images/codelimo.jpg" alt="Code Arduino (JPEG)" loading="lazy" decoding="async" /></span></div>
+			<div class="col-4"><span class="image fit"><img src="images/gazebo.jpg" alt="Code Arduino (JPEG)" loading="lazy" decoding="async" /></span></div>
 			
 		</div>
 	</div>
@@ -1661,7 +1798,7 @@
 		Cette approche m’a permis de produire une solution <strong>modulaire</strong>, lisible, et facile à faire évoluer.
 	</p>
 
-	<ul class="actions"><li><a href="index.html#projects" class="button">← Retour aux projets</a></li></ul>
+	<ul class="actions"><li><a href="index.html#projects" class="button js-smart-back">← Retour</a></li></ul>
 	<hr class="major" />
 </section>
 
@@ -1672,7 +1809,7 @@
 		<div class="row gtr-50 gtr-uniform">
 
 			
-			<div class="col-4"><span class="image fit"><img src="images/cronoo.jpg" alt="Code Arduino (JPEG)"></span></div>
+			<div class="col-4"><span class="image fit"><img src="images/fpga-project-new.jpg" alt="Carte FPGA DE2 avec chronomètre sur afficheurs 7 segments" loading="lazy" decoding="async" /></span></div>
 			
 			
 		</div>
@@ -1700,7 +1837,7 @@
 		sous Quartus.
 	</p>
 
-	<ul class="actions"><li><a href="index.html#projects" class="button">← Retour aux projets</a></li></ul>
+	<ul class="actions"><li><a href="index.html#projects" class="button js-smart-back">← Retour</a></li></ul>
 	<hr class="major" />
 </section>
 
@@ -1710,9 +1847,9 @@
 	<div class="project-gallery">
 		<div class="row gtr-50 gtr-uniform">
 
-			<div class="col-4"><span class="image fit"><img src="images/diagramme.jpeg" alt="Robot Arduino (PNG)"></span></div>
-			<div class="col-4"><span class="image fit"><img src="images/lab.jpeg" alt="Code Arduino (JPEG)"></span></div>
-			<div class="col-4"><span class="image fit"><img src="images/fa.jpeg" alt="Code Arduino (JPEG)"></span></div>
+			<div class="col-4"><span class="image fit"><img src="images/labview-project-new.jpg" alt="Interface LabVIEW de sélection de café" loading="lazy" decoding="async" /></span></div>
+			<div class="col-4"><span class="image fit"><img src="images/lab.jpeg" alt="Écran LabVIEW de sélection par intensité" loading="lazy" decoding="async" /></span></div>
+			<div class="col-4"><span class="image fit"><img src="images/fa.jpeg" alt="Diagramme bloc LabVIEW du projet café" loading="lazy" decoding="async" /></span></div>
 			
 		</div>
 	</div>
@@ -1745,7 +1882,7 @@
 		pour une application cohérente et exploitable.
 	</p>
 
-	<ul class="actions"><li><a href="index.html#projects" class="button">← Retour aux projets</a></li></ul>
+	<ul class="actions"><li><a href="index.html#projects" class="button js-smart-back">← Retour</a></li></ul>
 	<hr class="major" />
 </section>
 
@@ -1755,9 +1892,9 @@
 	<div class="project-gallery">
 		<div class="row gtr-50 gtr-uniform">
 
-			<div class="col-4"><span class="image fit"><img src="images/1a.png" alt="Robot Arduino (PNG)"></span></div>
-			<div class="col-4"><span class="image fit"><img src="images/2a.png" alt="Code Arduino (JPEG)"></span></div>
-			<div class="col-4"><span class="image fit"><img src="images/3a.png" alt="Code Arduino (JPEG)"></span></div>
+			<div class="col-4"><span class="image fit"><img src="images/electronics-project-new.jpg" alt="Carte électronique réelle avec afficheur 7 segments" loading="lazy" decoding="async" /></span></div>
+			<div class="col-4"><span class="image fit"><img src="images/2a.png" alt="Routage PCB de la carte électronique" loading="lazy" decoding="async" /></span></div>
+			<div class="col-4"><span class="image fit"><img src="images/3a.png" alt="Prototype physique de la carte électronique" loading="lazy" decoding="async" /></span></div>
 			
 			
 			
@@ -1768,7 +1905,7 @@
 		J’ai réalisé une carte électronique dédiée à l’affichage numérique sur <strong>afficheur 7 segments via une interface TCI</strong> .<br> Le projet a commencé par <strong>l’analyse du besoin</strong> et la définition des fonctionnalités attendues <strong>(mode d’affichage, contraintes d’alimentation, type d’interface)</strong>. J’ai ensuite conçu<strong> le schéma électronique</strong> en sélectionnant les composants adaptés (afficheur, drivers/résistances, connectique et alimentation) puis <strong>validé</strong> les choix par des vérifications de cohérence électrique. Après cette phase de conception, j’ai procédé au<strong> câblage </strong>et à l’assemblage de la carte, en veillant au respect du routage, à la qualité des soudures et à la fiabilité des connexions. J’ai ensuite développé la partie logicielle pour piloter l’afficheur et gérer la communication via l’interface TCI, avec une mise au point progressive (tests unitaires des segments, puis affichage complet). Enfin, j’ai <strong>réalisé une campagne de tests fonctionnels (validation de l’affichage, stabilité, erreurs de communication, consommation)</strong> et corrigé les anomalies jusqu’à obtenir un fonctionnement robuste et conforme aux spécifications
 	</p>
 
-	<ul class="actions"><li><a href="index.html#projects" class="button">← Retour aux projets</a></li></ul>
+	<ul class="actions"><li><a href="index.html#projects" class="button js-smart-back">← Retour</a></li></ul>
 </section>
 
 <section id="image">
@@ -1776,7 +1913,7 @@
 	<div class="project-gallery">
 		<div class="row gtr-50 gtr-uniform">
 
-			<div class="col-4"><span class="image fit"><img src="images/azer.png" alt="Robot Arduino (PNG)"></span></div>
+			<div class="col-4"><span class="image fit"><img src="images/gas-dilution-project-new.jpg" alt="Unité de dilution gazeuse avec instrumentation et supervision" loading="lazy" decoding="async" /></span></div>
 
 		</div>
 	</div>
@@ -1787,7 +1924,7 @@
 		J’ai développé sous <strong>LabVIEW </strong>une interface de supervision dédiée, permettant le<strong> pilotage des régulateurs</strong>, le réglage dynamique des consignes de débit, la visualisation en temps réel des données mesurées et l’enregistrement des paramètres pour l’analyse et la traçabilité. En parallèle, j’ai conçu et implémenté <strong>la logique de commande assurant la synchronisation des débitmètres</strong>, le calcul des rapports de dilution, la gestion des états de fonctionnement et la détection d’anomalies. Enfin, j’ai réalisé des phases de tests et de validation afin de vérifier la fiabilité du système, la reproductibilité des mélanges et la robustesse du pilotage en conditions réelles d’utilisation.
 	</p>
 
-	<ul class="actions"><li><a href="index.html#projects" class="button">← Retour aux projets</a></li></ul>
+	<ul class="actions"><li><a href="index.html#projects" class="button js-smart-back">← Retour</a></li></ul>
 </section>
 
 <p><strong>Note :</strong> Je tiens à préciser que certains projets ont été menés en collaboration avec d’autres étudiants, dans un cadre académique.</p>
@@ -2292,5 +2429,38 @@
 </script>
 
 			<script src="assets/js/sox27-platform.js"></script>
-	</body>
+	
+<script id="sb27-smart-back">
+(function(){
+  const URL_KEY='sb27:return:url';
+  const Y_KEY='sb27:return:y';
+  const RESTORE_KEY='sb27:restore:y';
+  function goBack(ev){
+    if(ev) ev.preventDefault();
+    let remembered='', y='0';
+    try{remembered=sessionStorage.getItem(URL_KEY)||'';y=sessionStorage.getItem(Y_KEY)||'0';}catch(e){}
+    const ref=document.referrer||'';
+    if(ref){
+      try{
+        const u=new URL(ref,window.location.href);
+        const same=(u.origin===window.location.origin)||window.location.protocol==='file:';
+        if(same && (u.pathname.endsWith('/index.html') || /index[^/]*\.html$/i.test(u.pathname))){ history.back(); return; }
+      }catch(e){}
+    }
+    if(remembered){
+      try{sessionStorage.setItem(RESTORE_KEY,y);}catch(e){}
+      window.location.href=remembered;
+    }else{
+      window.location.href='index.html#projects';
+    }
+  }
+  document.querySelectorAll('.js-smart-back').forEach(function(a){a.addEventListener('click',goBack);});
+  document.querySelectorAll('a[href="simulation-3d.html"]').forEach(function(a){
+    a.addEventListener('click',function(){
+      try{sessionStorage.setItem(URL_KEY,window.location.href);sessionStorage.setItem(Y_KEY,String(window.scrollY||0));}catch(e){}
+    },{passive:true});
+  });
+})();
+</script>
+</body>
 </html>

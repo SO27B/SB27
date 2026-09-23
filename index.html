@@ -6,12 +6,67 @@
 	Editorial by HTML5 UPh
 	html5up.net | @ajlkn
 -->
-<html>
+<html lang="fr">
 	<head>
-		<title>SO X27 — Intelligent Systems Engineer | Sofiane Badja</title>
+		<title>Sofiane Badja — Automatique, Robotique & Industrie 4.0 | SO X27</title>
 		
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<meta name="description" content="Portfolio de Sofiane Badja, étudiant en Master 2 Automatique & Robotique — parcours Industrie 4.0 et alternant Ingénierie Méthodes Test chez Cofidur EMS. Projets en vision industrielle, robotique, automatisme, IA, électronique et systèmes embarqués." />
+		<meta name="keywords" content="Sofiane Badja, automatique, robotique, industrie 4.0, Cofidur EMS, Keyence IV4, vision industrielle, SOVIX, SO X27, ROS2, automatisme, électronique, IA" />
+		<meta name="author" content="Sofiane Badja" />
+		<meta name="robots" content="index, follow, max-image-preview:large" />
+		<meta name="theme-color" content="#09090f" />
+		<link rel="canonical" href="https://so27b.github.io/SB27/" />
+		<link rel="icon" href="images/so.jpeg" type="image/jpeg" />
+		<link rel="apple-touch-icon" href="images/so.jpeg" />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content="fr_FR" />
+		<meta property="og:site_name" content="SO X27 — Sofiane Badja" />
+		<meta property="og:title" content="Sofiane Badja — Automatique, Robotique & Industrie 4.0" />
+		<meta property="og:description" content="Vision industrielle, automatisme, robotique, IA et systèmes embarqués : découvrez mes projets SOVIX, SOVIX 3D, SO X27 et mes réalisations industrielles." />
+		<meta property="og:url" content="https://so27b.github.io/SB27/" />
+		<meta property="og:image" content="https://so27b.github.io/SB27/assets/og/portfolio-preview.jpg" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content="Portfolio SO X27 de Sofiane Badja — automatique, robotique et Industrie 4.0" />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Sofiane Badja — Automatique, Robotique & Industrie 4.0" />
+		<meta name="twitter:description" content="Portfolio technique : SOVIX, simulation 3D, agent IA SO X27, robotique, automatisme et vision industrielle." />
+		<meta name="twitter:image" content="https://so27b.github.io/SB27/assets/og/portfolio-preview.jpg" />
+
+		<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Sofiane Badja",
+  "url": "https://so27b.github.io/SB27/",
+  "jobTitle": "Alternant Ingénierie Méthodes Test",
+  "affiliation": {
+    "@type": "Organization",
+    "name": "Cofidur EMS"
+  },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Université Clermont Auvergne"
+  },
+  "knowsAbout": [
+    "Automatique",
+    "Robotique",
+    "Industrie 4.0",
+    "Vision industrielle",
+    "Keyence IV4",
+    "ROS2",
+    "Électronique",
+    "Intelligence artificielle",
+    "Systèmes embarqués"
+  ],
+  "email": "mailto:sofianebadja90@gmail.com"
+}
+		</script>
+
 		<link rel="stylesheet" href="assets/css/main.css" />
 
 		<style>
@@ -779,7 +834,13 @@
 				#banner .content,
 				#banner .image { width: 100% !important; }
 			}
-		</style>
+		
+/* ===== Navigation locale + média SO X27 : finition responsive ===== */
+#projects .posts article img[src$="sox27-agent-capture.png"]{object-position:center center!important;}
+@media (max-width:736px){
+  #projects .posts article img[src$="sox27-agent-capture.png"]{height:auto!important;aspect-ratio:1207/871;object-fit:cover!important;}
+}
+</style>
 
 	
 
@@ -1338,6 +1399,8 @@
 			@media (prefers-reduced-motion: reduce) {
 				*, *::before, *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
 				.sox27-loader { display:none; }
+				/* Le radar SO X27 reste animé sur PC, tablette et mobile. */
+				.sox27-radar::before { animation: sox27RadarSpin 7s linear infinite !important; }
 			}
 
 		</style>
@@ -1346,6 +1409,15 @@
 	
 <style id="sox27-simulation-embed-style">
   #simulation-convoyeur { margin-top: 2.5rem; }
+  .so-video-placeholder{border:1px dashed rgba(255,255,255,.18);border-radius:18px;padding:1.15rem;background:linear-gradient(180deg, rgba(15,23,42,.72), rgba(8,15,31,.92));min-height:240px;display:flex;align-items:center;justify-content:center;text-align:center;box-shadow:inset 0 0 0 1px rgba(56,189,248,.08);}
+  .so-video-placeholder strong{display:block;color:#fff;font-size:1.05rem;margin-bottom:.35rem;}
+  .so-video-placeholder span{display:block;color:#cbd5e1;font-size:.96rem;line-height:1.6;}
+  .so-preview-figure{margin:0 0 1.25rem 0;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.08);box-shadow:0 18px 40px rgba(3,7,18,.3);}
+  .so-preview-figure img{display:block;width:100%;height:auto;}
+  .so-preview-caption{padding:.85rem 1rem;background:rgba(2,6,23,.66);color:#cbd5e1;font-size:.95rem;}
+  .so-pill-list{display:flex;flex-wrap:wrap;gap:.65rem;margin:1rem 0 0 0;}
+  .so-pill-list span{display:inline-flex;align-items:center;border-radius:999px;padding:.45rem .9rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);font-size:.9rem;color:#e2e8f0;}
+
   .sox27-simulation-frame-card {
     background: rgba(14,16,28,.82);
     border: 1px solid rgba(255,255,255,.13);
@@ -1390,8 +1462,27 @@
   .button,button,input[type="submit"],input[type="button"]{min-height:44px;display:inline-flex;align-items:center;justify-content:center;line-height:1.2!important}
   .so-tag,.so-project-tags span,.so-tech-grid span{transition:transform .25s ease,border-color .25s ease,background .25s ease}
   .so-tag:hover,.so-project-tags span:hover,.so-tech-grid span:hover{transform:translateY(-3px);border-color:rgba(56,189,248,.38);background:rgba(56,189,248,.10)}
-  .so-public-tech-icons{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.8rem;margin-top:1.25rem}
-  .so-public-tech-icons span{min-height:82px;display:grid;place-items:center;text-align:center;padding:.8rem;border-radius:20px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.055);color:#f8fafc;font-weight:800;font-size:.82rem}
+  .so-public-tech-icons{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.9rem;margin-top:1.25rem}
+  .so-tech-card{
+    min-height:126px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem;text-align:center;
+    padding:1rem .65rem;border-radius:22px;border:1px solid rgba(255,255,255,.12);
+    background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.035));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 14px 35px rgba(0,0,0,.16);
+    transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease,background .28s ease;
+    position:relative;overflow:hidden;
+  }
+  .so-tech-card::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 20%,rgba(56,189,248,.10),transparent 72%);transform:translateX(-115%);transition:transform .6s ease;pointer-events:none}
+  .so-tech-card:hover{transform:translateY(-6px);border-color:rgba(56,189,248,.42);background:linear-gradient(145deg,rgba(56,189,248,.09),rgba(139,92,246,.06));box-shadow:0 20px 46px rgba(56,189,248,.12),0 16px 40px rgba(0,0,0,.24)}
+  .so-tech-card:hover::after{transform:translateX(115%)}
+  .so-tech-logo{height:52px;min-width:58px;display:flex;align-items:center;justify-content:center;gap:.28rem;position:relative;z-index:1}
+  .so-tech-logo i{font-size:2.65rem;line-height:1}
+  .so-tech-logo svg{width:52px;height:52px;display:block;overflow:visible}
+  .so-tech-name{color:#f8fafc;font-weight:800;font-size:.82rem;line-height:1.2;position:relative;z-index:1}
+  .brand-python i{color:#4b8bbe;text-shadow:0 0 18px rgba(75,139,190,.22)}
+  .brand-python::after{content:"";position:absolute;width:16px;height:16px;border-radius:50%;right:5px;bottom:5px;background:#ffd343;box-shadow:0 0 14px rgba(255,211,67,.35)}
+  .brand-html i:nth-child(1){color:#e34f26}.brand-html i:nth-child(2){color:#1572b6}.brand-html i:nth-child(3){color:#f7df1e}
+  .brand-html i{font-size:2.05rem}
+  .brand-ros svg,.brand-auto svg,.brand-keyence svg,.brand-vision svg,.brand-electronics svg,.brand-arduino svg,.brand-control svg,.brand-nodered svg,.brand-labview svg,.brand-industry svg{filter:drop-shadow(0 0 14px rgba(56,189,248,.16))}
   .so-public-footer{margin:3rem 0 1.5rem;padding:1.2rem;text-align:center;border-radius:24px;border:1px solid rgba(255,255,255,.12);background:rgba(15,23,42,.58);color:#cbd5e1}
   .so-public-footer strong{display:block;margin-bottom:.3rem;background:linear-gradient(90deg,var(--pub-gold),var(--pub-cyan),var(--pub-violet));-webkit-background-clip:text;background-clip:text;color:transparent!important}
   .sox27-simulation-frame{height:min(780px,82vh)!important}
@@ -1412,7 +1503,9 @@
     .so-hero-subtitle,#banner p,p{font-size:.96rem!important;line-height:1.7!important}
     .so-stats{grid-template-columns:1fr!important;gap:.85rem!important}
     .so-public-tech-icons{grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem}
-    .so-public-tech-icons span{min-height:72px;border-radius:16px;font-size:.76rem}
+    .so-tech-card{min-height:108px;border-radius:16px;padding:.8rem .55rem}
+    .so-tech-logo{height:44px}.so-tech-logo svg{width:44px;height:44px}.so-tech-logo i{font-size:2.25rem}.brand-html i{font-size:1.75rem}
+    .so-tech-name{font-size:.75rem}
     .so-project-tags,.so-hero-tags,.so-tech-grid{gap:.55rem!important}
     .so-tag,.so-project-tags span,.so-tech-grid span{font-size:.72rem!important;padding:.42rem .62rem!important}
     .actions{display:grid!important;grid-template-columns:1fr;gap:.7rem}
@@ -1479,7 +1572,34 @@ html,body{max-width:100%;overflow-x:hidden!important}
 #projects .posts article .actions .button{width:100%!important;font-size:.82rem!important}
 }
 </style>
-</head>
+
+		<style id="so-final-qa">
+			html, body { max-width: 100%; overflow-x: hidden; }
+			img, video, iframe, svg { max-width: 100%; }
+			a, button, .button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+			a:focus-visible, button:focus-visible, .button:focus-visible { outline: 3px solid #38bdf8 !important; outline-offset: 4px; }
+			#projects .posts article { min-height: 100%; }
+			#projects .posts article > p { line-height: 1.65; }
+			#projects .posts article .image img { background: #0b1020; }
+			.so-public-tech-icons .so-tech-card { min-height: 132px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+			.so-public-tech-icons .so-tech-logo { min-height: 58px; display:flex; align-items:center; justify-content:center; }
+			@media (max-width: 980px) {
+				#banner .actions { display:grid !important; grid-template-columns:repeat(2,minmax(0,1fr)) !important; width:100%; }
+				#banner .actions li, #banner .actions .button { width:100% !important; }
+			}
+			@media (max-width: 560px) {
+				#banner .actions { grid-template-columns:1fr !important; }
+				.so-public-tech-icons { grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:.7rem !important; }
+				.so-public-tech-icons .so-tech-card { min-width:0; padding:.9rem .55rem !important; }
+				.so-tech-name { font-size:.82rem !important; line-height:1.25; word-break:normal; overflow-wrap:anywhere; }
+				#projects .posts article .image img, #projects .posts article .image.fit img { height: 210px !important; }
+			}
+			@media (prefers-reduced-motion: reduce) {
+				html { scroll-behavior:auto; }
+			}
+		</style>
+
+	</head>
 
 	<body class="is-preload">
 		<canvas id="sox27-neural-core" aria-hidden="true"></canvas>
@@ -1538,12 +1658,13 @@ html,body{max-width:100%;overflow-x:hidden!important}
 							<ul class="actions">
 								<li><a href="#projects" class="button big">Voir mes projets</a></li>
 								<li><a href="#experience" class="button big">Mon expérience</a></li>
+								<li><a href="assets/docs/SOFIANE_BADJA_CV_M2_Alternance_2026.pdf" target="_blank" rel="noopener" class="button big">Voir mon CV</a></li>
 								<li><a href="elements.html" class="button big">Me contacter</a></li>
 							</ul>
 						</div>
 
 						<span class="image object">
-							<img src="images/so.jpeg" alt="Photo de Sofiane Badja" />
+							<img src="images/so.jpeg" alt="Photo de Sofiane Badja" fetchpriority="high" decoding="async" />
 						</span>
 					</section>
 
@@ -1553,13 +1674,13 @@ html,body{max-width:100%;overflow-x:hidden!important}
   <header class="major"><h2>Présentation</h2></header>
   <div class="so-experience-card">
     <p>
-      Étudiant en <strong>Automatique et Robotique</strong>, je construis mon parcours autour des systèmes intelligents,
+      Étudiant en <strong>Master 2 Automatique & Robotique — parcours Industrie 4.0</strong>, je construis mon parcours autour des systèmes intelligents,
       de la vision industrielle, de l’automatisation avancée et de l’ingénierie appliquée aux environnements de production.
     </p>
     <p>
       Mon profil combine une première formation en <strong>Automatique en Algérie</strong>, une licence française en
-      <strong>Électronique, Électrotechnique et Automatique</strong>, puis un cycle Master orienté robotique,
-      contrôle, programmation et systèmes industriels.
+      <strong>Électronique, Électrotechnique et Automatique</strong>, puis un <strong>Master 2 Automatique & Robotique — parcours Industrie 4.0</strong>,
+      orienté robotique, contrôle, programmation et systèmes industriels intelligents.
     </p>
     <p>
       À travers mes projets, je cherche à relier la rigueur scientifique à des solutions concrètes :
@@ -1571,8 +1692,8 @@ html,body{max-width:100%;overflow-x:hidden!important}
 
 					<!-- ===== CHIFFRES CLÉS ===== -->
 					<div class="so-stats">
-						<div class="so-stat-card"><strong>10+</strong><span>Projets techniques présentés</span></div>
-						<div class="so-stat-card"><strong>M1</strong><span>Automatique et Robotique</span></div>
+						<div class="so-stat-card"><strong>+12</strong><span>Projets techniques présentés</span></div>
+						<div class="so-stat-card"><strong>M2</strong><span>Automatique & Robotique — parcours Industrie 4.0</span></div>
 						<div class="so-stat-card"><strong>Industrie</strong><span>Vision, contrôle qualité et automatisme</span></div>
 					</div>
 
@@ -1680,7 +1801,7 @@ html,body{max-width:100%;overflow-x:hidden!important}
 							<div class="sox27-timeline-item">
 								<span>03</span>
 								<div>
-									<h3>Master Automatique & Robotique</h3>
+									<h3>Master 1 Automatique & Robotique</h3>
 									<p>Approfondissement en robotique, contrôle, programmation, IA appliquée et systèmes industriels intelligents.</p>
 								</div>
 							</div>
@@ -1701,8 +1822,15 @@ html,body{max-width:100%;overflow-x:hidden!important}
 							<div class="sox27-timeline-item">
 								<span>06</span>
 								<div>
-									<h3>Industrie 4.0</h3>
-									<p>Orientation vers des systèmes connectés, intelligents, automatisés et exploitables dans un environnement industriel réel.</p>
+									<h3>Master 2 Automatique & Robotique — parcours Industrie 4.0</h3>
+									<p>Spécialisation en systèmes industriels connectés, automatisation avancée, robotique et technologies de l’Industrie 4.0.</p>
+								</div>
+							</div>
+							<div class="sox27-timeline-item">
+								<span>07</span>
+								<div>
+									<h3>Alternance — Cofidur EMS</h3>
+									<p>Ingénierie Méthodes Test : structuration d’une cellule de banc de test, développement d’IHM et de drivers STM32, intégration d’équipements et documentation du flux de qualification.</p>
 								</div>
 							</div>
 						</div>
@@ -1712,14 +1840,150 @@ html,body{max-width:100%;overflow-x:hidden!important}
 					
 <!-- ===== TECHNOLOGIES CLÉS ===== -->
 <section id="technologies-cles">
-  <header class="major"><h2>Technologies & domaines clés</h2></header>
+  <header class="major"><h2>Technologies & outils</h2></header>
   <p class="so-section-intro">
-    Un socle technique orienté systèmes intelligents, vision industrielle, automatisation et développement logiciel.
+    Un écosystème technique complet réunissant automatisme, robotique, électronique, vision industrielle, développement logiciel, simulation et intelligence artificielle.
   </p>
-  <div class="so-public-tech-icons">
-    <span>Python</span><span>ROS2</span><span>Automatisme</span><span>Keyence IV</span>
-    <span>Vision industrielle</span><span>Électronique</span><span>Arduino</span><span>Contrôle-commande</span>
-    <span>HTML / CSS / JS</span><span>Node-RED</span><span>LabVIEW</span><span>Industrie 4.0</span>
+  <div class="so-public-tech-icons" aria-label="Technologies et domaines techniques">
+    <div class="so-tech-card" title="Python">
+      <div class="so-tech-logo brand-python" aria-hidden="true"><i class="fab fa-python"></i></div>
+      <span class="so-tech-name">Python</span>
+    </div>
+
+    <div class="so-tech-card" title="ROS 2">
+      <div class="so-tech-logo brand-ros" aria-hidden="true">
+        <svg viewBox="0 0 64 64" role="img"><g fill="#e6f3ff"><circle cx="15" cy="15" r="4"/><circle cx="32" cy="15" r="4"/><circle cx="49" cy="15" r="4"/><circle cx="15" cy="32" r="4"/><circle cx="32" cy="32" r="4"/><circle cx="49" cy="32" r="4"/><circle cx="15" cy="49" r="4"/><circle cx="32" cy="49" r="4"/><circle cx="49" cy="49" r="4"/></g><path d="M8 57h48" stroke="#38bdf8" stroke-width="2" opacity=".75"/></svg>
+      </div>
+      <span class="so-tech-name">ROS2</span>
+    </div>
+
+    <div class="so-tech-card" title="Automatisme">
+      <div class="so-tech-logo brand-auto" aria-hidden="true">
+        <svg viewBox="0 0 64 64"><g fill="none" stroke="#38bdf8" stroke-width="4"><circle cx="32" cy="32" r="10"/><path d="M32 6v10M32 48v10M6 32h10M48 32h10M13.6 13.6l7.1 7.1M43.3 43.3l7.1 7.1M50.4 13.6l-7.1 7.1M20.7 43.3l-7.1 7.1"/></g><circle cx="32" cy="32" r="4" fill="#facc15"/></svg>
+      </div>
+      <span class="so-tech-name">Automatisme</span>
+    </div>
+
+    <div class="so-tech-card" title="Keyence IV">
+      <div class="so-tech-logo brand-keyence" aria-hidden="true">
+        <svg viewBox="0 0 72 54"><rect x="4" y="8" width="64" height="38" rx="8" fill="#ef4444" opacity=".12" stroke="#ef4444" stroke-width="2"/><circle cx="22" cy="27" r="9" fill="none" stroke="#ef4444" stroke-width="4"/><circle cx="22" cy="27" r="3" fill="#f8fafc"/><path d="M38 18h22M38 27h16M38 36h19" stroke="#f8fafc" stroke-width="3" stroke-linecap="round"/></svg>
+      </div>
+      <span class="so-tech-name">Keyence IV</span>
+    </div>
+
+    <div class="so-tech-card" title="Vision industrielle">
+      <div class="so-tech-logo brand-vision" aria-hidden="true">
+        <svg viewBox="0 0 64 64"><path d="M6 32s9-16 26-16 26 16 26 16-9 16-26 16S6 32 6 32Z" fill="none" stroke="#38bdf8" stroke-width="3"/><circle cx="32" cy="32" r="9" fill="none" stroke="#a78bfa" stroke-width="3"/><path d="M32 20v5M32 39v5M20 32h5M39 32h5" stroke="#facc15" stroke-width="2.5" stroke-linecap="round"/></svg>
+      </div>
+      <span class="so-tech-name">Vision industrielle</span>
+    </div>
+
+    <div class="so-tech-card" title="Électronique">
+      <div class="so-tech-logo brand-electronics" aria-hidden="true">
+        <svg viewBox="0 0 64 64"><rect x="18" y="18" width="28" height="28" rx="5" fill="none" stroke="#a78bfa" stroke-width="3"/><rect x="25" y="25" width="14" height="14" rx="2" fill="#38bdf8" opacity=".28" stroke="#38bdf8" stroke-width="2"/><g stroke="#f8fafc" stroke-width="2"><path d="M24 8v10M32 8v10M40 8v10M24 46v10M32 46v10M40 46v10M8 24h10M8 32h10M8 40h10M46 24h10M46 32h10M46 40h10"/></g></svg>
+      </div>
+      <span class="so-tech-name">Électronique</span>
+    </div>
+
+    <div class="so-tech-card" title="Arduino">
+      <div class="so-tech-logo brand-arduino" aria-hidden="true">
+        <svg viewBox="0 0 78 52"><path d="M39 26c-9-16-17-18-24-18C6 8 2 15 2 26s4 18 13 18c7 0 15-2 24-18Zm0 0c9-16 17-18 24-18 9 0 13 7 13 18s-4 18-13 18c-7 0-15-2-24-18Z" fill="none" stroke="#22d3ee" stroke-width="5" stroke-linecap="round"/><path d="M13 26h12M19 20v12M54 26h12" stroke="#f8fafc" stroke-width="3" stroke-linecap="round"/></svg>
+      </div>
+      <span class="so-tech-name">Arduino</span>
+    </div>
+
+    <div class="so-tech-card" title="Contrôle-commande">
+      <div class="so-tech-logo brand-control" aria-hidden="true">
+        <svg viewBox="0 0 64 64"><g fill="none" stroke="#38bdf8" stroke-width="3" stroke-linecap="round"><path d="M12 16h40M12 32h40M12 48h40"/></g><circle cx="24" cy="16" r="6" fill="#facc15"/><circle cx="42" cy="32" r="6" fill="#a78bfa"/><circle cx="30" cy="48" r="6" fill="#22c55e"/></svg>
+      </div>
+      <span class="so-tech-name">Contrôle-commande</span>
+    </div>
+
+    <div class="so-tech-card" title="HTML, CSS et JavaScript">
+      <div class="so-tech-logo brand-html" aria-hidden="true"><i class="fab fa-html5"></i><i class="fab fa-css3-alt"></i><i class="fab fa-js-square"></i></div>
+      <span class="so-tech-name">HTML / CSS / JS</span>
+    </div>
+
+    <div class="so-tech-card" title="Node-RED">
+      <div class="so-tech-logo brand-nodered" aria-hidden="true">
+        <svg viewBox="0 0 72 52"><path d="M8 26h16M48 26h16M28 15l16 0M28 37h16" stroke="#ef4444" stroke-width="4" stroke-linecap="round"/><rect x="4" y="18" width="16" height="16" rx="5" fill="#7f1d1d" stroke="#ef4444" stroke-width="2"/><rect x="26" y="7" width="20" height="16" rx="5" fill="#991b1b" stroke="#f87171" stroke-width="2"/><rect x="26" y="29" width="20" height="16" rx="5" fill="#991b1b" stroke="#f87171" stroke-width="2"/><rect x="52" y="18" width="16" height="16" rx="5" fill="#7f1d1d" stroke="#ef4444" stroke-width="2"/></svg>
+      </div>
+      <span class="so-tech-name">Node-RED</span>
+    </div>
+
+    <div class="so-tech-card" title="LabVIEW">
+      <div class="so-tech-logo brand-labview" aria-hidden="true">
+        <svg viewBox="0 0 72 56"><rect x="8" y="8" width="56" height="40" rx="7" fill="#facc15" opacity=".16" stroke="#facc15" stroke-width="2"/><path d="M23 17 45 28 23 39Z" fill="#facc15"/><path d="M48 18h8v20h-8" fill="none" stroke="#38bdf8" stroke-width="3" stroke-linecap="round"/></svg>
+      </div>
+      <span class="so-tech-name">LabVIEW</span>
+    </div>
+
+    <div class="so-tech-card" title="Industrie 4.0">
+      <div class="so-tech-logo brand-industry" aria-hidden="true">
+        <svg viewBox="0 0 64 64"><path d="M8 52V25l14 8V22l14 9V18l12 7v27H8Z" fill="none" stroke="#38bdf8" stroke-width="3" stroke-linejoin="round"/><path d="M48 15V7h7v45" fill="none" stroke="#a78bfa" stroke-width="3"/><circle cx="18" cy="43" r="3" fill="#22c55e"/><circle cx="32" cy="43" r="3" fill="#facc15"/><circle cx="45" cy="43" r="3" fill="#a78bfa"/><path d="M18 43l14-10 13 10" fill="none" stroke="#f8fafc" stroke-width="1.8" opacity=".85"/></svg>
+      </div>
+      <span class="so-tech-name">Industrie 4.0</span>
+    </div>
+
+    <div class="so-tech-card" title="MATLAB / Simulink">
+      <div class="so-tech-logo" aria-hidden="true"><svg viewBox="0 0 72 56"><path d="M7 38c10-18 16-26 25-27 8 0 10 14 17 16 5 2 9-2 16-12" fill="none" stroke="#38bdf8" stroke-width="4" stroke-linecap="round"/><path d="M18 41c9-7 16-10 22-6 7 5 12 7 24 3" fill="none" stroke="#f97316" stroke-width="4" stroke-linecap="round"/><rect x="51" y="30" width="13" height="13" rx="2" fill="#ef4444" opacity=".9"/></svg></div>
+      <span class="so-tech-name">MATLAB / Simulink</span>
+    </div>
+
+    <div class="so-tech-card" title="C++">
+      <div class="so-tech-logo" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M32 4 55 17v30L32 60 9 47V17Z" fill="#2563eb" opacity=".25" stroke="#60a5fa" stroke-width="3"/><text x="32" y="38" text-anchor="middle" font-size="22" font-weight="900" fill="#f8fafc">C++</text></svg></div>
+      <span class="so-tech-name">C++</span>
+    </div>
+
+    <div class="so-tech-card" title="TIA Portal">
+      <div class="so-tech-logo" aria-hidden="true"><svg viewBox="0 0 72 56"><rect x="7" y="9" width="58" height="38" rx="7" fill="#64748b" opacity=".22" stroke="#94a3b8" stroke-width="2"/><text x="36" y="34" text-anchor="middle" font-size="22" font-weight="900" fill="#cbd5e1">TIA</text></svg></div>
+      <span class="so-tech-name">TIA Portal</span>
+    </div>
+
+    <div class="so-tech-card" title="Control Expert">
+      <div class="so-tech-logo" aria-hidden="true"><svg viewBox="0 0 72 56"><rect x="8" y="9" width="56" height="38" rx="7" fill="#16a34a" opacity=".18" stroke="#22c55e" stroke-width="2"/><text x="36" y="28" text-anchor="middle" font-size="15" font-weight="900" fill="#86efac">SE</text><text x="36" y="42" text-anchor="middle" font-size="9" font-weight="800" fill="#f8fafc">CONTROL</text></svg></div>
+      <span class="so-tech-name">Control Expert</span>
+    </div>
+
+    <div class="so-tech-card" title="Step 7">
+      <div class="so-tech-logo" aria-hidden="true"><svg viewBox="0 0 72 56"><rect x="10" y="10" width="52" height="36" rx="7" fill="#0ea5e9" opacity=".18" stroke="#38bdf8" stroke-width="2"/><text x="36" y="36" text-anchor="middle" font-size="24" font-weight="900" fill="#bae6fd">S7</text></svg></div>
+      <span class="so-tech-name">Step 7</span>
+    </div>
+
+    <div class="so-tech-card" title="Siemens NX">
+      <div class="so-tech-logo" aria-hidden="true"><svg viewBox="0 0 72 56"><path d="M9 45V11h10l15 22V11h10v34H34L19 23v22Z" fill="#38bdf8"/><path d="M48 11h11L45 28l15 17H49L39 33" fill="#a78bfa"/></svg></div>
+      <span class="so-tech-name">Siemens NX</span>
+    </div>
+
+    <div class="so-tech-card" title="VHDL">
+      <div class="so-tech-logo" aria-hidden="true"><svg viewBox="0 0 64 64"><rect x="17" y="17" width="30" height="30" rx="5" fill="none" stroke="#a78bfa" stroke-width="3"/><text x="32" y="37" text-anchor="middle" font-size="12" font-weight="900" fill="#f8fafc">VHDL</text><g stroke="#38bdf8" stroke-width="2"><path d="M23 8v9M32 8v9M41 8v9M23 47v9M32 47v9M41 47v9M8 23h9M8 32h9M8 41h9M47 23h9M47 32h9M47 41h9"/></g></svg></div>
+      <span class="so-tech-name">VHDL</span>
+    </div>
+
+    <div class="so-tech-card" title="Quartus">
+      <div class="so-tech-logo" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="31" cy="31" r="18" fill="none" stroke="#38bdf8" stroke-width="5"/><path d="M40 40 54 54" stroke="#facc15" stroke-width="5" stroke-linecap="round"/><circle cx="31" cy="31" r="5" fill="#a78bfa"/></svg></div>
+      <span class="so-tech-name">Quartus</span>
+    </div>
+
+    <div class="so-tech-card" title="Gazebo">
+      <div class="so-tech-logo" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="m32 7 21 12v25L32 57 11 44V19Z" fill="none" stroke="#38bdf8" stroke-width="3"/><path d="m11 19 21 13 21-13M32 32v25" fill="none" stroke="#a78bfa" stroke-width="2.5"/></svg></div>
+      <span class="so-tech-name">Gazebo</span>
+    </div>
+
+    <div class="so-tech-card" title="Unreal Engine">
+      <div class="so-tech-logo" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="25" fill="none" stroke="#f8fafc" stroke-width="3"/><path d="M20 17c9 3 14 3 22 0-3 7-4 15-5 23-3 6-7 8-12 9 3-5 5-10 6-16-5 4-8 7-11 11 1-10 1-18 0-27Z" fill="#f8fafc" opacity=".92"/></svg></div>
+      <span class="so-tech-name">Unreal Engine</span>
+    </div>
+
+    <div class="so-tech-card" title="PyQt6">
+      <div class="so-tech-logo brand-python" aria-hidden="true"><i class="fab fa-python"></i><span style="font-weight:900;color:#22c55e;font-size:.85rem;position:absolute;right:-2px;bottom:2px;background:#052e16;border:1px solid #22c55e;border-radius:7px;padding:.08rem .26rem;">Qt</span></div>
+      <span class="so-tech-name">PyQt6</span>
+    </div>
+
+    <div class="so-tech-card" title="Ollama / Gemini">
+      <div class="so-tech-logo" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M32 7c4 12 8 16 20 20-12 4-16 8-20 20-4-12-8-16-20-20 12-4 16-8 20-20Z" fill="#a78bfa"/><circle cx="50" cy="12" r="4" fill="#38bdf8"/><circle cx="13" cy="49" r="3" fill="#facc15"/></svg></div>
+      <span class="so-tech-name">Ollama / Gemini</span>
+    </div>
   </div>
 </section>
 
@@ -1727,6 +1991,29 @@ html,body{max-width:100%;overflow-x:hidden!important}
 <!-- ===== EXPÉRIENCE PROFESSIONNELLE ===== -->
 <section id="experience">
   <header class="major"><h2>Expérience professionnelle</h2></header>
+
+  <div class="so-experience-card">
+    <h3>Alternant Ingénierie Méthodes Test — Cofidur EMS</h3>
+
+    <p class="so-meta">
+      Industrie 4.0 • Banc de test • IHM • STM32 • Intégration d’équipements
+    </p>
+
+    <p>
+      Alternance orientée vers la structuration d’une cellule de banc de test industriel : développement d’une IHM propriétaire,
+      création de drivers STM32 pour piloter des appareils génériques, mise en place d’un démonstrateur et formalisation du flux process
+      allant du devis à la qualification. L’objectif est de construire une solution fiable, documentée et déployable sur plusieurs sites industriels.
+    </p>
+
+    <div class="so-project-tags">
+      <span>STM32</span>
+      <span>IHM</span>
+      <span>Banc de test</span>
+      <span>Drivers instruments</span>
+      <span>Méthodes Test</span>
+      <span>Industrie 4.0</span>
+    </div>
+  </div>
 
   <div class="so-experience-card">
     <h3>Stagiaire automaticien — Cofidur EMS</h3>
@@ -1750,84 +2037,56 @@ html,body{max-width:100%;overflow-x:hidden!important}
     </div>
 
     <div class="so-cofidur-app">
-      <h3>Application IV Cofidur</h3>
+      <h3>SOVIX — Industrial Vision IV4</h3>
       <p>
-        Application web dédiée à la présentation du projet de vision industrielle Cofidur EMS :
-        caméra Keyence IV4, contrôle qualité automatisé, analyse OK/NOK et intégration sur ligne de production.
+        Application web premium développée pour présenter le projet de vision industrielle Cofidur EMS : architecture du poste, logique PPVS, scénarios OK/NOK, supervision industrielle et intégration de la simulation 3D.
       </p>
+      <div class="so-project-tags">
+        <span>Application web</span>
+        <span>Vision industrielle</span>
+        <span>PPVS</span>
+        <span>Industrie 4.0</span>
+      </div>
     </div>
 
     <ul class="actions">
-      <li><a href="generic.html#stage" class="button">Voir le projet Cofidur</a></li>
-      <li><a href="https://cofidur-keyence-sofiane.netlify.app/" target="_blank" class="button primary">Voir l’application IV Cofidur</a></li>
-      <li><a href="#simulation-convoyeur" class="button primary">Voir la simulation convoyeur</a></li>
+      <li><a href="generic.html#stage" class="button sb27-local-nav">Voir le projet Cofidur</a></li>
+      <li><a href="#simulation-convoyeur" class="button">Voir SOVIX 3D</a></li>
     </ul>
   </div>
 </section>
 
-<!-- ===== DÉMONSTRATION PUBLIQUE ===== -->
-<section id="public-demo">
-  <header class="major">
-    <h2>Démonstration publique</h2>
-  </header>
-
-  <div class="so-experience-card">
-    <h3>Vision industrielle & automatisation — démonstration accessible</h3>
-    <p>
-      Cette partie présente le principe du projet sous une forme claire pour un visiteur public :
-      contrôle qualité par vision, décision OK/NOK, arrêt du convoyeur en cas de défaut,
-      intervention opérateur, puis reprise du cycle après correction.
-    </p>
-
-    <div class="so-project-tags">
-      <span>Vision industrielle</span>
-      <span>Contrôle qualité</span>
-      <span>OK/NOK</span>
-      <span>Convoyeur automatisé</span>
-      <span>Interface pédagogique</span>
-    </div>
-
-    <ul class="actions">
-      <li><a href="#simulation-convoyeur" class="button primary">Voir la simulation intégrée</a></li>
-      <li><a href="https://cofidur-keyence-sofiane.netlify.app/" target="_blank" class="button">Voir l’application IV Cofidur</a></li>
-    </ul>
-  </div>
-</section>
-
-
-<!-- ===== SIMULATION CONVOYEUR VISION INTÉGRÉE ===== -->
+<!-- ===== SIMULATION 3D SOVIX ===== -->
 <section id="simulation-convoyeur">
   <header class="major">
-    <h2>Simulation convoyeur vision — OK/NOK</h2>
+    <h2>SOVIX 3D — Simulation de contrôle vision Keyence IV4</h2>
   </header>
   <p class="so-section-intro">
-    Démonstration animée du cycle automatisé : convoyeur en marche, acquisition caméra, analyse carte,
-    arrêt sur défaut NOK, intervention opérateur, appui pédale, marche arrière 3 secondes puis re-scan OK.
+    Version interactive de la cellule industrielle développée autour de la caméra Keyence IV4 : convoyeur, carte électronique, supervision des E/S, scénarios carte simple / carte longue A/B, défaut NOK, pédale opérateur et réinspection.
   </p>
 
-  <div class="sox27-simulation-frame-card">
-    <div class="sox27-simulation-frame-head">
-      <strong>SO X27 Industrial Vision Simulation</strong>
-      <span>Convoyeur • Caméra • Scan • OK/NOK • Pédale reset</span>
-    </div>
-    <iframe class="sox27-simulation-frame"
-            src="convoyeur-vision.html"
-            title="Simulation convoyeur vision OK NOK"
-            loading="lazy"></iframe>
+  <figure class="so-preview-figure">
+    <img src="images/sovix-3d-preview.webp" alt="Aperçu de la simulation 3D SOVIX pour le contrôle vision Keyence IV4" loading="lazy" decoding="async" />
+    <figcaption class="so-preview-caption">
+      Simulation 3D responsive pensée pour PC, tablette et mobile, avec interface de supervision et scénarios industriels réalistes.
+    </figcaption>
+  </figure>
+
+  <div class="so-pill-list">
+    <span>Responsive PC / tablette / mobile</span>
+    <span>Caméra Keyence IV4</span>
+    <span>Contrôle PPVS</span>
+    <span>Réinspection opérateur</span>
+    <span>Supervision industrielle</span>
   </div>
+
+  <ul class="actions" style="margin-top:1.35rem;">
+    <li><a href="simulation-3d.html" class="button primary sb27-local-nav">Voir la simulation</a></li>
+  </ul>
 </section>
 
 
-<!-- ===== TECHNOLOGIES ===== -->
-					<section id="technologies">
-						<header class="major"><h2>Technologies & outils</h2></header>
-						<p class="so-section-intro">Les outils que j’utilise dans mes projets couvrent l’automatisme industriel, la robotique, la simulation, l’électronique, le développement logiciel et l’intégration de systèmes.</p>
-						<div class="so-tech-grid">
-							<span>Python</span><span>MATLAB / Simulink</span><span>C++</span><span>ROS2</span><span>Arduino</span><span>LabVIEW</span><span>TIA Portal</span><span>Control Expert</span><span>Step 7</span><span>Siemens NX</span><span>VHDL</span><span>Quartus</span><span>Node-RED</span><span>Keyence</span><span>Vision industrielle</span><span>HTML / CSS / JavaScript</span>
-						</div>
-					</section>
-
-					<!-- ===== COMPÉTENCES ===== -->
+<!-- ===== COMPÉTENCES ===== -->
 					<section id="skills">
 	<header class="major">
 		<h2> Mes compétences : </h2>
@@ -1952,142 +2211,183 @@ Tests, validation et mise au point des programmes automatisés.
 	<p class="so-section-intro">Chaque projet est présenté comme une réalisation technique : contexte, objectif, outils utilisés et résultat obtenu.</p>
 	<div class="posts">
 
+		<!-- SOVIX -->
+		<article>
+			<a href="https://sovix-so.netlify.app/" target="_blank" class="image fit">
+				<img src="images/sovix-logo.webp" alt="SOVIX — Industrial Vision IV4" loading="lazy" decoding="async" />
+			</a>
+			<h3>SOVIX — Industrial Vision IV4</h3>
+			<p>Application web premium de vision industrielle conçue pour présenter le projet Cofidur EMS : architecture du poste, logique PPVS, supervision, scénarios OK/NOK et accès direct à la simulation 3D.</p>
+			<div class="so-project-tags"><span>Vision industrielle</span><span>Keyence IV4</span><span>HTML / CSS / JS</span><span>Industrie 4.0</span></div>
+			<ul class="actions">
+				<li><a href="https://sovix-so.netlify.app/" target="_blank" rel="noopener noreferrer" class="button primary">Découvrir SOVIX</a></li>
+				<li><a href="generic.html#sovix" class="button sb27-local-nav">Voir le détail</a></li>
+			</ul>
+		</article>
+
+		<!-- SOVIX 3D -->
+		<article>
+			<a href="simulation-3d.html" class="image fit sb27-local-nav">
+				<img src="images/sovix-3d-preview.webp" alt="SOVIX 3D — Simulation de contrôle vision Keyence IV4" loading="lazy" decoding="async" />
+			</a>
+			<h3>SOVIX 3D — Simulation de contrôle vision Keyence IV4</h3>
+			<p>Simulation 3D interactive de la cellule de contrôle qualité : convoyeur, caméra Keyence IV4, carte électronique, supervision des E/S, scénarios A/B, défaut NOK et réinspection opérateur.</p>
+			<div class="so-project-tags"><span>Simulation 3D</span><span>Keyence IV4</span><span>OK/NOK</span><span>Responsive</span></div>
+			<ul class="actions">
+				<li><a href="simulation-3d.html" class="button primary sb27-local-nav">Voir la simulation</a></li>
+				<li><a href="generic.html#sovix-3d" class="button sb27-local-nav">Voir le détail</a></li>
+			</ul>
+		</article>
+
+		<!-- Agent IA SO X27 -->
+		<article>
+			<a href="generic.html#sox27-agent" class="image fit sb27-local-nav">
+				<img src="images/sox27-agent-capture.webp" alt="Interface de l’agent IA SO X27" loading="lazy" decoding="async" />
+			</a>
+			<h3>SO X27 — Agent IA personnel pour PC</h3>
+			<p>Assistant intelligent développé pour interagir avec le PC, exécuter des commandes, traiter des fichiers et orchestrer des fonctions IA à travers une interface dédiée. Une démonstration vidéo est intégrée dans la fiche projet.</p>
+			<div class="so-project-tags"><span>Python</span><span>PyQt6</span><span>Gemini / Ollama</span><span>Automatisation PC</span></div>
+			<ul class="actions">
+				<li><a href="generic.html#sox27-agent" class="button primary sb27-local-nav">Découvrir SO X27</a></li>
+			</ul>
+		</article>
+
 		<!-- Stage Cofidur EMS -->
 		<article>
-			<a href="generic.html#stage" class="image fit">
-				<img src="images/azertyu.png" alt="Stage automaticien Cofidur EMS" />
+			<a href="generic.html#stage" class="image fit sb27-local-nav">
+				<img src="images/azertyu.webp" alt="Stage automaticien Cofidur EMS" loading="lazy" decoding="async" />
 			</a>
-			<h3>Stage automaticien – Mise en place d’un système de contrôle avec vision automatique</h3>
+			<h3>Stage automaticien — Mise en place d’un système de contrôle avec vision automatique</h3>
+			<p>Projet industriel mené chez Cofidur EMS autour de la mise en place d’un contrôle qualité automatisé avec caméra Keyence IV4-600CA et intégration sur ligne de production.</p>
 			<div class="so-project-tags"><span>Keyence</span><span>Vision</span><span>Industrie</span></div>
 			<ul class="actions">
-				<li><a href="generic.html#stage" class="button">Plus</a></li>
-				<li><a href="convoyeur-vision.html" target="_blank" class="button primary">Simulation convoyeur</a></li>
+				<li><a href="generic.html#stage" class="button sb27-local-nav">Voir le détail</a></li>
 			</ul>
 		</article>
 
 		<!-- Robot KUKA -->
 		<article>
-			<a href="generic.html#kuka" class="image fit">
-				<img src="images/ppppp.png" alt="Pilotage d'un bras robot KUKA" />
+			<a href="generic.html#kuka" class="image fit sb27-local-nav">
+				<img src="images/ppppp.webp" alt="Pilotage d'un bras robot KUKA" loading="lazy" decoding="async" />
 			</a>
 			<h3>Pilotage d’un bras robot industriel KUKA</h3>
 			<div class="so-project-tags"><span>KUKA</span><span>Node-RED</span><span>TCP/IP</span></div>
 			<ul class="actions">
-				<li><a href="generic.html#kuka" class="button">Plus</a></li>
+				<li><a href="generic.html#kuka" class="button sb27-local-nav">Voir le détail</a></li>
 			</ul>
 		</article>
 
 		<!-- TIA Portal -->
 		<article>
-			<a href="generic.html#tia-portal" class="image fit">
-				<img src="images/aqwzsx.png" alt="Automatisme industriel avec TIA Portal" />
+			<a href="generic.html#tia-portal" class="image fit sb27-local-nav">
+				<img src="images/aqwzsx.webp" alt="Automatisme industriel avec TIA Portal" loading="lazy" decoding="async" />
 			</a>
 			<h3>Automatisme industriel avec TIA Portal (Siemens S7-1200)</h3>
 			<div class="so-project-tags"><span>Siemens</span><span>API</span><span>IHM</span></div>
 			<ul class="actions">
-				<li><a href="generic.html#tia-portal" class="button">Plus</a></li>
+				<li><a href="generic.html#tia-portal" class="button sb27-local-nav">Voir le détail</a></li>
 			</ul>
 		</article>
 
 		<!-- Control Expert -->
 		<article>
-			<a href="generic.html#control-expert" class="image fit">
-				<img src="images/aaaaa.png" alt="Automatisme industriel avec Control Expert (Schneider)" />
+			<a href="generic.html#control-expert" class="image fit sb27-local-nav">
+				<img src="images/aaaaa.webp" alt="Automatisme industriel avec Control Expert (Schneider)" loading="lazy" decoding="async" />
 			</a>
 			<h3>Automatisme industriel avec Control Expert (Schneider)</h3>
 			<div class="so-project-tags"><span>Schneider</span><span>API</span><span>Automatisme</span></div>
 			<ul class="actions">
-				<li><a href="generic.html#control-expert" class="button">Plus</a></li>
+				<li><a href="generic.html#control-expert" class="button sb27-local-nav">Voir le détail</a></li>
 			</ul>
 		</article>
 
 		<!-- Moteur V6 -->
 		<article>
-			<a href="generic.html#moteur-v6" class="image fit">
-				<img src="images/3131.png" alt="Conception d'un moteur V6 sur Siemens NX" />
+			<a href="generic.html#moteur-v6" class="image fit sb27-local-nav">
+				<img src="images/3131.webp" alt="Conception d'un moteur V6 sur Siemens NX" loading="lazy" decoding="async" />
 			</a>
 			<h3>Conception d'un moteur V6 sur Siemens NX</h3>
 			<ul class="actions">
-				<li><a href="generic.html#moteur-v6" class="button">Plus</a></li>
+				<li><a href="generic.html#moteur-v6" class="button sb27-local-nav">Voir le détail</a></li>
 			</ul>
 		</article>
 
 		<!-- MATLAB -->
 		<article>
-			<a href="generic.html#matlab" class="image">
-				<img src="images/aaaa.png" alt="MATLAB Simulink" />
+			<a href="generic.html#matlab" class="image sb27-local-nav">
+				<img src="images/aaaa.webp" alt="MATLAB Simulink" loading="lazy" decoding="async" />
 			</a>
 			<h3>Asservissement et régulation – MATLAB/Simulink</h3>
 			<ul class="actions">
-				<li><a href="generic.html#matlab" class="button">Plus</a></li>
+				<li><a href="generic.html#matlab" class="button sb27-local-nav">Voir le détail</a></li>
 			</ul>
 		</article>
 
 		<!-- Arduino -->
 		<article>
-			<a href="generic.html#arduino" class="image">
-				<img src="images/999.png" alt="Arduino" />
+			<a href="generic.html#arduino" class="image sb27-local-nav">
+				<img src="images/999.webp" alt="Arduino" loading="lazy" decoding="async" />
 			</a>
 			<h3>Robot mobile autonome – Arduino</h3>
 			<ul class="actions">
-				<li><a href="generic.html#arduino" class="button">Plus</a></li>
+				<li><a href="generic.html#arduino" class="button sb27-local-nav">Voir le détail</a></li>
 			</ul>
 		</article>
 
 		<!-- ROS2 LIMO -->
 		<article>
-			<a href="generic.html#ros2" class="image">
-				<img src="images/888.png" alt="Robot LIMO ROS2" />
+			<a href="generic.html#ros2" class="image sb27-local-nav">
+				<img src="images/888.webp" alt="Robot LIMO ROS2" loading="lazy" decoding="async" />
 			</a>
 			<h3>Robot LIMO – ROS2 & Gazebo</h3>
 			<div class="so-project-tags"><span>ROS2</span><span>Gazebo</span><span>Robotique mobile</span></div>
 			<ul class="actions">
-				<li><a href="generic.html#ros2" class="button">Plus</a></li>
+				<li><a href="generic.html#ros2" class="button sb27-local-nav">Voir le détail</a></li>
 			</ul>
 		</article>
 
 		<!-- FPGA -->
 		<article>
-			<a href="generic.html#fpga" class="image">
-				<img src="images/777.png" alt="Projet FPGA Chronomètre" />
+			<a href="generic.html#fpga" class="image sb27-local-nav">
+				<img src="images/fpga-project-new.jpg" alt="Projet FPGA Chronomètre sur carte DE2" loading="lazy" decoding="async" />
 			</a>
 			<h3>FPGA – Chronomètre (VHDL / Quartus)</h3>
 			<div class="so-project-tags"><span>VHDL</span><span>FPGA</span><span>Quartus</span></div>
 			<ul class="actions">
-				<li><a href="generic.html#fpga" class="button">Plus</a></li>
+				<li><a href="generic.html#fpga" class="button sb27-local-nav">Voir le détail</a></li>
 			</ul>
 		</article>
 
 		<!-- LabVIEW -->
 		<article>
-			<a href="generic.html#labview" class="image">
-				<img src="images/99999.png" alt="Application LabVIEW" />
+			<a href="generic.html#labview" class="image sb27-local-nav">
+				<img src="images/labview-project-new.jpg" alt="Interface LabVIEW de sélection de café" loading="lazy" decoding="async" />
 			</a>
 			<h3>LabVIEW – Application de sélection de café</h3>
 			<ul class="actions">
-				<li><a href="generic.html#labview" class="button">Plus</a></li>
+				<li><a href="generic.html#labview" class="button sb27-local-nav">Voir le détail</a></li>
 			</ul>
 		</article>
 
 		<!-- Carte électronique -->
 		<article>
-			<a href="generic.html#elec" class="image">
-				<img src="images/q.png" alt="Conception carte électronique" />
+			<a href="generic.html#elec" class="image sb27-local-nav">
+				<img src="images/electronics-project-new.jpg" alt="Carte électronique réalisée avec afficheur 7 segments" loading="lazy" decoding="async" />
 			</a>
 			<h3>Électronique – Conception de carte (PCB)</h3>
 			<ul class="actions">
-				<li><a href="generic.html#elec" class="button">Plus</a></li>
+				<li><a href="generic.html#elec" class="button sb27-local-nav">Voir le détail</a></li>
 			</ul>
 		</article>
 
 		<!-- Unité de dilution gazeuse -->
 		<article>
-			<a href="generic.html#image" class="image">
-				<img src="images/aqwz.png" alt="Conception d'une unité de dilution gazeuse" />
+			<a href="generic.html#image" class="image sb27-local-nav">
+				<img src="images/gas-dilution-project-new.jpg" alt="Unité de dilution gazeuse instrumentée" loading="lazy" decoding="async" />
 			</a>
 			<h3>Conception d'une unité de dilution gazeuse</h3>
 			<ul class="actions">
-				<li><a href="generic.html#image" class="button">Plus</a></li>
+				<li><a href="generic.html#image" class="button sb27-local-nav">Voir le détail</a></li>
 			</ul>
 		</article>
 
@@ -2106,8 +2406,9 @@ Tests, validation et mise au point des programmes automatisés.
 							<li><a href="#projects">Projets</a></li>
 							<li><a href="#skills">Compétences</a></li>
 							<li><a href="#experience">Expérience</a></li>
-									<li><a href="#public-demo">Démonstration</a></li>
-							<li><a href="#technologies">Technologies</a></li>
+									<li><a href="#simulation-convoyeur">Simulation 3D</a></li>
+							<li><a href="#technologies-cles">Technologies</a></li>
+							<li><a href="assets/docs/SOFIANE_BADJA_CV_M2_Alternance_2026.pdf" target="_blank" rel="noopener">CV PDF</a></li>
 							<li><a href="elements.html">Contact</a></li>
 						</ul>
 					</nav>
@@ -2592,5 +2893,33 @@ Tests, validation et mise au point des programmes automatisés.
 })();
 </script>
 
+
+<script id="sb27-return-memory">
+(function(){
+  const URL_KEY='sb27:return:url';
+  const Y_KEY='sb27:return:y';
+  const RESTORE_KEY='sb27:restore:y';
+  function remember(){
+    try{
+      sessionStorage.setItem(URL_KEY, window.location.href);
+      sessionStorage.setItem(Y_KEY, String(window.scrollY || document.documentElement.scrollTop || 0));
+    }catch(e){}
+  }
+  document.querySelectorAll('a.sb27-local-nav, a[href^="generic.html#"], a[href="simulation-3d.html"]').forEach(function(a){
+    a.addEventListener('click', remember, {passive:true});
+  });
+  try{
+    const y=sessionStorage.getItem(RESTORE_KEY);
+    if(y!==null){
+      sessionStorage.removeItem(RESTORE_KEY);
+      const target=Math.max(0, parseFloat(y)||0);
+      if('scrollRestoration' in history) history.scrollRestoration='manual';
+      requestAnimationFrame(function(){
+        requestAnimationFrame(function(){ window.scrollTo({top:target,left:0,behavior:'auto'}); });
+      });
+    }
+  }catch(e){}
+})();
+</script>
 </body>
 </html>
